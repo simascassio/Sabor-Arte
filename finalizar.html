@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/finalizar.css">
+    <script src="js/finalizar.js" defer></script>
+    <script src="js/dark.js" defer></script>
+    <script src="js/login.js" defer></script>
+    <title>Finalizar Pedido</title>
+</head>
+<body>
+      <header class="opcoes">
+  <nav class="container-navbar">
+    <div class="nav-esquerda">
+      <a href="Home.html" class="text">Home</a>
+      <a href="Home.html#redes" class="text">Contato</a>
+      <a href="Login.html" class="text">Login</a>
+      <a href="finalizar.html" class="text">Pedido</a>
+
+      <div class="dropdown">
+        <a href="Cardapio.html" class="text">Cardápio</a>
+        <div class="dropdown-content">
+          <a href="Cardapio.html">Pizzas</a>
+          <a href="Cardapio.html#bebidas">Sobremesas</a>
+          <a href="Cardapio.html#sobremesas">Bebidas</a>
+        </div>
+      </div>
+    </div>
+    <div class="usuario-box" onclick="alternarSair()">
+       <span id="nome-usuario"></span>
+       <img id="usuario" src="https://img.icons8.com/ios-filled/50/FFFFFF/user-male-circle.png" alt="Usuário">
+       <button id="btn-sair" onclick="sair()">Sair</button>
+    </div>
+  </nav>
+</header>
+
+        <main class="container-principal">
+            <section  class="pedido-section" aria-label="Itens do Pedido">
+                <div class="pedido-finalizar">
+                    <h1> Confira os itens do seu pedido:</h1>
+                    <img src="https://cdn-icons-png.freepik.com/256/2611/2611181.png?ga=GA1.1.1350957922.1743372057&semt=ais_hybrid" alt="">
+                </div class="pedido-carrinho">
+                    <ul id="pedido-lista">
+                        <!-- Itens do pedido serão adicionados aqui dinamicamente -->
+                    </ul>
+                <div>
+                   
+                </div>
+            </section>
+      
+
+        
+         <section class="dark-mode">
+  <!-- Botão para ativar Dark Mode -->
+              <img id="dark-btn" src="https://cdn-icons-png.flaticon.com/128/6077/6077517.png" alt="Ativar tema escuro">
+
+  <!-- Botão para voltar ao tema claro (escondido inicialmente) -->
+              <img id="light-btn" src="https://cdn-icons-png.flaticon.com/128/6077/6077095.png" alt="Ativar tema claro" style="display: none;">
+        </section>
+
+    
+        <!-- Seção de Endereço -->
+        <section class="endereco-section" aria-label="Endereço de Entrega">
+            <h2>Endereço para Entrega :</h2>
+            <form id="form-endereco" class="form">
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" name="cep" placeholder="00000-000" required>
+                
+                <label for="rua">Rua:</label>
+                <input type="text" id="rua" name="rua" required>
+                
+                <label for="bairro">Bairro:</label>
+                <input type="text" id="bairro" name="bairro" required>
+                
+                <label for="numero">Número:</label>
+                <input type="text" id="numero" name="numero" required>
+
+                <label for="pagamento">Método de Pagamento:</label>
+                <select id="pagamento" name="pagamento" required>
+                    <option value="pix">Pix</option>
+                    <option value="debito">Débito</option>
+                    <option value="credito">Crédito</option>
+                    <option value="dinheiro">Dinheiro</option>
+                </select>
+
+                <button type="submit" class="btn">Confirmar Pedido</button>
+            </form>
+        </section>
+        <!-- Modal de Sucesso -->
+<div id="modal-sucesso" class="modal">
+  <div class="modal-conteudo">
+    <span class="fechar" id="fechar-modal">&times;</span>
+    <p>✅ Pedido feito com sucesso!<br>Prazo de entrega: 40 minutos.</p>
+  </div>
+</div>
+</main>
+</body>
+</html>

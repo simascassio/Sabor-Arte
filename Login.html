@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    <link rel="stylesheet" type="text/css" href="css/Login-cardapio.css">
+     <script src="js/dark.js" defer></script>
+    <script src="js/login.js" defer></script>
+    
+</head>
+<body>
+     <header class="opcoes">
+  <nav class="container-navbar">
+    <div class="nav-esquerda">
+      <a href="Home.html" class="text">Home</a>
+      <a href="Home.html#redes" class="text">Contato</a>
+      <a href="Login.html" class="text">Login</a>
+      <a href="finalizar.html" class="text">Pedido</a>
+
+      <div class="dropdown">
+        <a href="Cardapio.html" class="text">Cardápio</a>
+        <div class="dropdown-content">
+          <a href="Cardapio.html">Pizzas</a>
+          <a href="Cardapio.html#bebidas">Sobremesas</a>
+          <a href="Cardapio.html#sobremesas">Bebidas</a>
+        </div>
+      </div>
+      <div class="usuario-box" onclick="alternarSair()"></div>   </div>
+       <span id="nome-usuario"></span>
+       <img id="usuario" src="https://img.icons8.com/ios-filled/50/FFFFFF/user-male-circle.png" alt="Usuário">
+       <button id="btn-sair" onclick="sair()">Sair</button>
+    </div>
+
+  </nav>
+</header>
+    
+    <main>
+     <section class="container-login">
+      <h2>LOGIN</h2>
+      <form onsubmit="logar(event)">
+        <label class="nome">Login</label>
+        <input type="text" id="input-nome-login" class="input" placeholder="Digite seu Login" required />
+        <label class="nome">Senha</label>
+        <input type="password" id="input-senha-login" class="input" placeholder="Senha" required />
+        <button type="submit" class="btn">Entrar</button>
+      </form>
+
+      <div class="cadastro">
+        <p>Não tem uma conta?</p>
+        <a href="cadastro.html">Cadastre-se</a>
+      </div>
+    
+            <div class="social">
+                <img src="imagens/google.svg" alt="Google Login" class="img">
+                <img src="imagens/fcb.svg" alt="Facebook Login" class="img">
+            </div> 
+        </section>
+
+         <!-- Botão para ativar Dark Mode -->
+      <img id="dark-btn" src="https://cdn-icons-png.flaticon.com/128/6077/6077517.png" alt="Ativar tema escuro">
+
+  <!-- Botão para voltar ao tema claro (escondido inicialmente) -->
+      <img id="light-btn" src="https://cdn-icons-png.flaticon.com/128/6077/6077095.png" alt="Ativar tema claro" style="display: none;">
+</section>
+        
+    </main>
+</body>
+</html>

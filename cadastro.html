@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./css/cadastro.css">
+    <script src="js/dark.js" defer></script>
+    <script src="js/login.js" defer></script>
+    <script src="js/cadastro.js" defer></script>
+    <title>Cadastro</title>
+</head>
+<body>
+     <!------------------------------------------------NAV BAR------------------------------------------------------>
+     <header class="opcoes">
+       
+        <nav class="container-navbar">
+          <div class="nav-esquerda">
+            <a href="Home.html" class="text">Home</a>
+            <a href="Home.html#redes" class="text">Contato</a>
+            <a href="/Login.html" class="text">Login</a>
+            <a href="finalizar.html" class="text">Pedido</a>
+            
+            <div class="dropdown">
+              <a href="/Cardapio.html" class="text">Cardápio</a>
+              <div class="dropdown-content">
+                <a href="Cardapio.html">Pizzas</a>
+                <a href="Cardapio.html#bebidas">Sobremesas</a>
+                <a href="Cardapio.html#sobremesas">Bebidas</a>
+              </div>
+            </div>
+          </div>
+             <div class="usuario-box" onclick="alternarSair()">
+             <span id="nome-usuario"></span>
+             <img id="usuario" src="https://img.icons8.com/ios-filled/50/FFFFFF/user-male-circle.png" alt="Usuário">
+             <button id="btn-sair" onclick="sair()">Sair</button>
+          </div>
+        </nav>      
+   </header>
+   <!-------------------------------------------------------------------------------------------------------------->
+
+
+   <main>
+     <section class="container">
+        <h2>DADOS PESSOAIS</h2> <!--SUBTITULO-->
+
+
+        
+        <form onsubmit="return validarFormulario()"> <!--INICIO DO FORMULARIO-->
+
+
+
+            <label for="nome">NOME</label>
+              <input type="text" id="nome" class="input" placeholder="Digite seu Nome Completo" />
+              <p class="error" id="erro-nome"></p><br><!--CAMPO NOME-->
+
+            <label for="nomematerno">NOME MATERTO</label>
+              <input type="text" id="nomematerno" class="input" placeholder="Digite o Nome da sua Mãe">
+              <p class="error" id="erro-materno"></p><br><!--CAMPO NOME-->
+
+            
+            <label for="dataNascimento">DATA DE NASCIMENTO</label>
+              <input type="date" id="dataNascimento" class="input" />
+              <p class="error" id="erro-data"></p><br> <!-- CAMPO DATA DE NASCIMENTO-->
+
+
+            
+            <!-----------------------------------CAMPO GÊNERO----------------------------------------------->
+            <label for="Gênero">GÊNERO</label>
+
+            <select id="nome" name="nome">
+                <option value="Selecione">Selecione</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+                <option value="nao-binario">Não-binário</option>
+                <option value="outro">Outro</option>
+                <option value="prefiro-nao-dizer">Prefiro não dizer</option>
+            </select><br>
+            <!---------------------------------------------------------------------------------------------->
+
+
+
+          <!--  <label for="nome">NOME MATERNO</label>
+            <input type="text" id="nomeMaterno" class="input" placeholder="Nome Materno" required><br> --> <!--CAMPO NOME MATERNO-->
+
+
+
+            <label for="cpf">CPF</label>
+              <input type="text" id="cpf" class="input" placeholder="CPF (xxx.xxx.xxx-xx)" />
+              <p class="error" id="erro-cpf"></p><br><!--CAMPO CPF-->
+
+
+
+            <h2>CONTATO</h2><!--SUBTITULO CONTATO-->
+
+
+            <label for="email">E-MAIL</label>
+              <input type="email" id="email" class="input" placeholder="sabor-art@gmail.com" />
+              <p class="error" id="erro-email"></p><br><!--CAMPO E-MAIL-->
+            
+
+
+
+            <label for="telefoneCelular">TELEFONE CELULAR</label>
+              <input type="text" id="telefoneCelular" class="input" placeholder="(+55)XX XXXXXXXXX" />
+              <p class="error" id="erro-celular"></p><br><!--CAMPO TELEFONE CELULAR-->
+
+
+
+            <label for="telefonefixo">TELEFONE FIXO</label>
+              <input type="text" id="telefonefixo" class="input" placeholder="(+55)XX XXXXXXXXX" />
+              <p class="error" id="erro-telefonefixo"></p><br><!--CAMPO TELEFONE FIXO-->
+
+
+
+            <label for="cep">CEP</label>
+              <input type="text" id="cep" class="input" placeholder="00000-000" onblur="buscarEndereco()" />
+              <p class="error" id="erro-cep"></p><br><!--CAMPO CEP-->
+
+
+
+            <label for="endereco">ENDEREÇO</label>
+              <input type="text" id="endereco" class="input" placeholder="Rua, Bairro, Cidade - UF" />
+              <p class="error" id="erro-endereco"></p><br><!--CAMPO ENDEREÇO-->
+
+
+
+            <label for="numerocasa">NÚMERO</label>
+              <input type="text" id="numerocasa" class="input" placeholder="N° da Residência">
+              <p class="error" id="erro-numerocasa"></p><br>
+
+            <label for="complemento">COMPLEMENTO</label>
+              <input type="text" id="complemento" class="input" placeholder="(Opcional)"><br>
+
+
+
+            <h2>ACESSO AO SISTEMA</h2><!--SUBTITULO-->
+
+
+
+            <label for="login">LOGIN</label>
+              <input type="text" id="login" class="input" placeholder="Login com 6 letras" />
+              <p class="error" id="erro-login"></p><br><!--LOGIN-->
+
+
+
+            <label for="senha">SENHA</label>
+              <input type="password" id="senha" class="input" placeholder="Senha com 8 letras" />
+              <p class="error" id="erro-senha"></p><br><!--SENHA-->
+
+
+
+            <label for="confirmarSenha">CONFIRMAR SENHA</label>
+              <input type="password" id="confirmarSenha" class="input" placeholder="Repita a senha" />
+              <p class="error" id="erro-confirmar"></p><br><!--CONFIRMAR SENHA-->
+
+
+
+            
+
+
+
+            <h2>ACESSO AO SISTEMA</h2><!--SUBTITULO-->
+
+
+
+            
+
+            <button type="submit" class="btn">CADASTRAR</button><br><!--ARÉA DO BOTAO ENVIAR-->
+            <button type="reset" class="btn">LIMPAR TELA</button><!--ARÉA DO BOTAO DE LIMPAR TELA-->
+        </form><!--FIM FORMULARIO-->
+     </section>
+            <!-- Botão para ativar Dark Mode -->
+   <img id="dark-btn" src="https://cdn-icons-png.flaticon.com/128/6077/6077517.png" alt="Ativar tema escuro">
+   
+            <!-- Botão para voltar ao tema claro (escondido inicialmente) -->
+   <img id="light-btn" src="https://cdn-icons-png.flaticon.com/128/6077/6077095.png" alt="Ativar tema claro" style="display: none;">
+   </main>
+
+
+    
+
+</body>
+
+</html>
