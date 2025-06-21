@@ -360,24 +360,25 @@ body.dark-mode .container {
 
 
 
-
 @media (max-width: 768px) {
+  body {
+    padding-top: 190px; /* ajustado para evitar sobreposição com o header fixo */
+  }
+
   .container-navbar {
     flex-direction: row;
-    justify-content: flex-start; /* alinhado à esquerda */
+    justify-content: flex-start;
     align-items: center;
     padding: 10px 20px;
   }
 
   .usuario-box {
-
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     cursor: pointer;
     margin-left: auto;
-   
   }
 
   #usuario {
@@ -391,7 +392,8 @@ body.dark-mode .container {
     gap: 8px;
   }
 
-  .nav-esquerda a, .dropdown > a {
+  .nav-esquerda a,
+  .dropdown > a {
     font-size: 15px;
     padding: 5px 0;
     width: fit-content;
@@ -401,11 +403,11 @@ body.dark-mode .container {
     position: absolute;
     min-width: 160px;
     background-color: #B22222;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1001;
   }
 
-  container {
+  .container {
     width: 90%;
     padding: 40px 20px;
   }
@@ -414,7 +416,8 @@ body.dark-mode .container {
     width: 100%;
   }
 
-  .input, select {
+  .input,
+  select {
     width: 100%;
     padding: 8px;
     font-size: 14px;
@@ -434,6 +437,10 @@ body.dark-mode .container {
 }
 
 @media (max-width: 480px) {
+  body {
+    padding-top: 190px; /* também ajustado aqui */
+  }
+
   .container-navbar {
     padding: 8px 15px;
   }
@@ -442,7 +449,8 @@ body.dark-mode .container {
     gap: 6px;
   }
 
-  .nav-esquerda a, .dropdown > a {
+  .nav-esquerda a,
+  .dropdown > a {
     font-size: 13px;
     padding: 4px 0;
   }
@@ -450,10 +458,6 @@ body.dark-mode .container {
   #usuario {
     width: 28px;
     height: 24px;
-  }
-
-  body {
-    padding-top: 80px;
   }
 
   .container {
@@ -466,7 +470,8 @@ body.dark-mode .container {
     margin-left: 8px;
   }
 
-  .input, select {
+  .input,
+  select {
     width: 100%;
     padding: 6px 8px;
     font-size: 13px;
