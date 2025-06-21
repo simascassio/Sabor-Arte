@@ -380,7 +380,10 @@ body.dark-mode p{
     flex-direction: row;
     margin: 10px;
     margin-left: 60px;
-  }
+   position: relative;
+}
+
+  
   
   .avaliacao {
     width: 30%;
@@ -448,15 +451,19 @@ body.dark-mode p{
     color: #666;
   }
 
-  .seta{
-    margin: 50px;
+.seta {
+    margin: 0; /* tira margem que empurra */
     text-align: center;
     display: flex;
     position: absolute;
-    right: 70px;
-    
-    
-  }
+    right: 120px; /* aumenta para afastar da borda e do último card */
+    top: 50%; /* para centralizar verticalmente */
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: all 0.7s ease;
+    width: 25px;
+    height: auto;
+}
 
   /* Ajustes para a seta */
   .seta img{
@@ -602,7 +609,18 @@ footer{
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     z-index: 1001;
   }
+
+  .seta {
+    right: 2px; /* afasta da borda e do card, ajusta conforme necessário */
+    top: 30%;
+    transform: translateY(30%);
+    margin: 0; /* remove margens laterais */
+  }
 }
+
+
+
+
 
 @media (max-width: 480px) {
   .container-navbar {
@@ -622,4 +640,12 @@ footer{
     width: 28px;
     height: 24px;
   }
+.seta {
+    right: 2px; /* ainda mais para esquerda, para não cobrir o card */
+    top: 20%;
+    transform: translateY(-30%);
+    margin: 0;
+  }
 }
+
+

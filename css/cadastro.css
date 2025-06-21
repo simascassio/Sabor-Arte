@@ -362,7 +362,7 @@ body.dark-mode .container {
 
 @media (max-width: 768px) {
   body {
-    padding-top: 190px; /* ajustado para evitar sobreposição com o header fixo */
+    padding-top: 210px; /* ajustado para evitar sobreposição com o header fixo */
   }
 
   .container-navbar {
@@ -438,7 +438,7 @@ body.dark-mode .container {
 
 @media (max-width: 480px) {
   body {
-    padding-top: 190px; /* também ajustado aqui */
+    padding-top: 210px; /* também ajustado aqui */
   }
 
   .container-navbar {
