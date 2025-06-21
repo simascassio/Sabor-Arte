@@ -8,6 +8,8 @@ body, html {
    background-color: #F3E9DA; /* Cor de fundo beige suave */
    margin: 0;
    padding: 0;
+  overflow-x: hidden;
+   max-width: 100%;
 }
 body {
     font-family: Arial, sans-serif;
@@ -615,6 +617,10 @@ footer{
     top: 30%;
     transform: translateY(30%);
     margin: 0; /* remove margens laterais */
+  }
+  .body html dark-mode {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
   }
 }
 
