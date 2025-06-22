@@ -8,7 +8,7 @@ body, html {
    background-color: #F3E9DA; /* Cor de fundo beige suave */
    margin: 0;
    padding: 0;
-  overflow-x: hidden;
+   
    max-width: 100%;
 }
 body {
@@ -180,9 +180,11 @@ body {
     transform: translateY(-5px);
 }
 /* Tema escuro global */
+body.dark-mode html,
 body.dark-mode {
   background-color: #1e1e1e;
   color: #f1f1f1;
+  width: 100%;
 }
 
 /* Herdar cor do texto para tudo */
@@ -618,9 +620,14 @@ footer{
     transform: translateY(30%);
     margin: 0; /* remove margens laterais */
   }
-  .body html dark-mode {
+  body.dark-mode {
     background-color: #1e1e1e;
-    color: #f1f1f1;
+  }
+
+  body.dark-mode .container-2,
+  body.dark-mode .quem-somos,
+  body.dark-mode .footer-contato {
+    background-color: #1e1e1e;
   }
 }
 
@@ -651,6 +658,15 @@ footer{
     top: 20%;
     transform: translateY(-30%);
     margin: 0;
+  }
+   body.dark-mode {
+    background-color: #1e1e1e;
+  }
+
+  body.dark-mode .container-2,
+  body.dark-mode .quem-somos,
+  body.dark-mode .footer-contato {
+    background-color: #1e1e1e;
   }
 }
 
