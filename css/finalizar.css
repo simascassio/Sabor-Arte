@@ -457,14 +457,14 @@ body.dark-mode .btn {
   }
 
   #usuario {
-    width: 35px;
+    width: 20px;
     height: 30px;
   }
 
   .nav-esquerda {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    flex-wrap: wrap;
+    gap: 3px;
   }
 
   .nav-esquerda a, .dropdown > a {
@@ -486,18 +486,24 @@ body.dark-mode .btn {
   .container-navbar {
     padding: 8px 15px;
   }
+.opcoes{
+ height:100px;
 
+}
   .nav-esquerda {
-    gap: 6px;
+    gap: 1px;
+    
   }
 
   .nav-esquerda a, .dropdown > a {
-    font-size: 13px;
-    padding: 4px 0;
+    font-size: 10px;
+
   }
 
   #usuario {
-    width: 28px;
+    width: 15px;
     height: 24px;
+    display: flex;
+    flex-wrap: wrap;
   }
 }
