@@ -1,5 +1,5 @@
 
-* * {
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -179,108 +179,15 @@ body {
     text-align: center;
 }
 
-/* Título */
-.container h2 {
-    margin-bottom: 20px;
-    color: #B22222;
-}
-
-/* Formulário */
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-form label.nome {
-    align-self: flex-start;
-    font-size: 15px;
-    margin-left: 15px;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.input {
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 2px solid #B22222;
-    border-radius: 5px;
-    background-color: #ffffff;
-}
-
-/* Botão de login */
-.btn {
-    width: 100%;
-    max-width: 220px;
-    height: 40px;
-    background-color: #B22222;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: medium;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.btn:hover {
-    background-color: #8B0000;
-    transform: translateY(-3px); /* agora sim sobe no hover */
-}
-
-/* Link de cadastro */
-.cadastro {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-.cadastro a {
-    color: #B22222;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.cadastro a:hover {
-    text-decoration: underline;
-    background-color: #8B0000;
-    color: white;
-    padding: 2px 5px;
-    border-radius: 4px;
-}
-
-/* Ícones sociais */
-.social {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    margin-top: 15px;
-}
-
-.img {
-    width: 35px;
-    height: auto;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.img:hover {
-    transform: scale(1.1);
-}
-
 
 @media (max-width: 768px) {
   .container-navbar {
     flex-direction: row;
-    justify-content: flex-start; /* alinhado à esquerda */
+    justify-content: flex-start; 
     align-items: center;
     padding: 10px 20px;
+    height: 50px;
+  
   }
 
   .usuario-box {
@@ -288,27 +195,29 @@ form label.nome {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: 2px;
     cursor: pointer;
-    margin-left: auto;
+    margin-left: 4px;
    
   }
 
   #usuario {
-    width: 15px;
+    width: 10px;
     height: 20px;
   }
 
   .nav-esquerda {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+     gap: 2px;
   }
 
   .nav-esquerda a, .dropdown > a {
-    font-size: 10px;
-    padding: 0px 0;
-    width: fit-content;
+    font-size: 15px;
+    padding: 5px 0;
+  
   }
 
   .dropdown-content {
@@ -318,9 +227,18 @@ form label.nome {
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     z-index: 1001;
   }
+
+    .dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .dropdown > a{
+    padding: 5px 0;
+    white-space: nowrap; /* Impede quebra de linha */
+  }
 }
-
-
 
 @media (max-width: 480px) {
   .container-navbar {
@@ -332,6 +250,8 @@ form label.nome {
 }
   .nav-esquerda {
     gap: 1px;
+    width: 100%;
+    white-space: nowrap; /* Impede quebra de linha */
     
   }
 
@@ -341,13 +261,19 @@ form label.nome {
   }
 
   #usuario {
-    width: 20px;
+    width: 15px;
     height: 24px;
     display: flex;
     flex-wrap: wrap;
   }
-}
 
+  
+  .dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
 /* cardapio */
 
 /* Ajuste de container principal */

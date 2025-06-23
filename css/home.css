@@ -573,7 +573,7 @@ footer{
 @media (max-width: 768px) {
   .container-navbar {
     flex-direction: row;
-    justify-content: flex-start; /* alinhado à esquerda */
+    justify-content: center; 
     align-items: center;
     padding: 10px 20px;
   }
@@ -597,7 +597,8 @@ footer{
   .nav-esquerda {
     display: flex;
     flex-wrap: wrap;
-    gap: 3px;
+    justify-content: center;
+     gap: 3px;
   }
 
   .nav-esquerda a, .dropdown > a {
@@ -645,6 +646,16 @@ body.dark-mode {
 }
 
 
+  .dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .dropdown > a{
+    padding: 5px 0;
+    white-space: nowrap; /* Impede quebra de linha */
+  }
 }
 
 
@@ -704,6 +715,13 @@ body.dark-mode {
     box-sizing: border-box;
     overflow-x: hidden; /* impede a rolagem lateral */
 }
+
+
+  .dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
 }
 
