@@ -1,5 +1,5 @@
 
-* * {
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -13,7 +13,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background-color: #F3E9DA; /* bege suave */
-    padding-top: 100px; /* espaço por causa do header fixo */
+   
 }
 
 
@@ -85,7 +85,8 @@ body {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-* ÍCONE DIREITA */
+
+
 #usuario{
   width: 40px;
   height: 30px;
@@ -117,7 +118,7 @@ body {
 
 .usuario-box img {
   width: 30px;
-  height: 30px;
+  height: 20px;
 }
 #nome-usuario {
   color: white;
@@ -148,8 +149,10 @@ body {
 }
 
 #btn-sair:hover {
-  background-color: #8B0000;
+   background-color: #B22222;
+   transform: translateY(-5px);
 }
+
 
 
 
@@ -166,7 +169,6 @@ body {
 .opcoes a:hover {
     color: #8B0000; /* vermelho escuro no hover */
 }
-
 /* Container do login */
 .container-login {
     background: #FFF9F9; /* branco rosado */
@@ -208,26 +210,102 @@ body {
 
 
 
-/* Responsividade */
-@media (max-width: 400px) {
-    .container-login {
-        width: 90%;
-    }
 
-    .opcoes a {
-        margin: 0 10px;
-        font-size: 14px;
-    }
+@media (max-width: 768px) {
+  .container-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; 
+    align-items: center;
+    padding: 10px 20px;
+    height: 50px;
+  
+  }
 
-    .text {
-        font-size: 14px;
-    }
+  .usuario-box {
 
-    .input {
-        width: 100%;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    cursor: pointer;
+    margin-left: 4px;
+   
+  }
+
+  #usuario {
+    width: 10px;
+    height: 20px;
+  }
+
+  .nav-esquerda {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+     gap: 2px;
+  }
+
+  .nav-esquerda a, .dropdown > a {
+    font-size: 15px;
+    padding: 5px 0;
+  
+  }
+
+  .dropdown-content {
+    position: absolute;
+    min-width: 160px;
+    background-color: #B22222;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1001;
+  }
+
+    .dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .dropdown > a{
+    padding: 5px 0;
+    white-space: nowrap; /* Impede quebra de linha */
+  }
 }
 
+@media (max-width: 480px) {
+  .container-navbar {
+    padding: 8px 15px;
+  }
+.opcoes{
+ height:100px;
+
+}
+  .nav-esquerda {
+    gap: 1px;
+    width: 100%;
+    white-space: nowrap; /* Impede quebra de linha */
+    
+  }
+
+  .nav-esquerda a, .dropdown > a {
+    font-size: 10px;
+
+  }
+
+  #usuario {
+    width: 15px;
+    height: 24px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  
+  .dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
 
 
 #dark-btn{
@@ -333,7 +411,7 @@ body.dark-mode h2 {
   align-items: center;
   justify-content: center;
   margin-top: 40px;
-  width: 400px; /* largura da imagem */
+  width: 300px; /* largura da imagem */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -402,51 +480,47 @@ body.pagina-erro {
 }
 
 
-
 @media (max-width: 768px) {
   .container-navbar {
+    display: flex;
     flex-direction: row;
-    justify-content: flex-start; /* alinhado à esquerda */
+    flex-wrap: wrap;          /* Permite quebra de linha se necessário */
+    justify-content: flex-start;
     align-items: center;
     padding: 10px 20px;
   }
 
-  .usuario-box {
+  .nav-esquerda {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;                /* Espaçamento maior pra respirar */
+    flex-wrap: wrap;          /* Quebra de linha se precisar */
+    max-width: 75%;           /* Limita o espaço para os links */
+  }
 
+  .nav-esquerda a, .dropdown > a {
+    font-size: 12px;
+    padding: 5px 0;
+    white-space: nowrap;      /* Impede quebra dentro do link */
+  }
+
+  .usuario-box {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     cursor: pointer;
-    margin-left: auto;
-   
+    margin-left: auto;        /* Empurra pro canto direito */
+    max-width: 20%;           /* Limita a largura para não quebrar linha */
+    min-width: 50px;          /* Garante mínimo para ícone + nome */
   }
 
   #usuario {
     width: 35px;
     height: 30px;
   }
-
-  .nav-esquerda {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .nav-esquerda a, .dropdown > a {
-    font-size: 15px;
-    padding: 5px 0;
-    width: fit-content;
-  }
-
-  .dropdown-content {
-    position: absolute;
-    min-width: 160px;
-    background-color: #B22222;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    z-index: 1001;
-  }
 }
+
 
 @media (max-width: 480px) {
   .container-navbar {
