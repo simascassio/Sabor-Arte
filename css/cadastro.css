@@ -162,7 +162,6 @@ body { /* FORA */
 /*color: #8B0000; /* vermelho escuro no hover 
 }*/
 
-
 .container { /* DENTRO */
     background: #FFF9F9; /* branco rosado */
     padding: 80px;
@@ -172,21 +171,17 @@ body { /* FORA */
     text-align: center;
 }
 
-
-.container h2 { /* DADOS PESSOAIS */
+.container h2 { /* Se ainda usar algum h2 fora dos fieldset */
     margin-bottom: 20px;
     color: #B22222;
 }
 
-
-form { /* TEXO DO FORMULARIO */
-    
+form { /* TEXTO DO FORMULARIO */
     display: flex;
     flex-direction: column;
     align-items: center;
     color: #333333;
 }
-
 
 label { /* TEXTO DE FORA */
     align-self: flex-start;
@@ -194,10 +189,7 @@ label { /* TEXTO DE FORA */
     margin-left: 25px;
     margin-bottom: 5px;
     color: #333333;
-    
-
 }
-
 
 .input { /* PREENCHER FORMULARIO */
     width: 90%;
@@ -209,7 +201,6 @@ label { /* TEXTO DE FORA */
     cursor: pointer;
 }
 
-
 select { /* SEXO */
     width: 90%;
     padding: 10px;
@@ -219,7 +210,6 @@ select { /* SEXO */
     background-color: #ffffff;
     cursor: pointer;
 }
-
 
 .btn { /* BOTAO */
     width: 100%;
@@ -235,26 +225,37 @@ select { /* SEXO */
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-
 .error { /* MENSAGEM DE ERRO */
     align-self: flex-start;
     margin-left: 25px;
     margin-top: -7px;
     font-size: 0.9em;
     color: red;
-    
 }
-
-
 
 .btn:hover { /* DENTRO BOTAO */
     background-color: #8B0000;
     transform: translateY(-3px); /* agora sim sobe no hover */
 }
 
+/* ---------------- FIELDSET E LEGEND ---------------- */
+fieldset {
+  border: 2px solid #B22222; /* mesma cor dos inputs */
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+  width: 100%;
+  text-align: left;
+}
 
+legend {
+  font-size: 18px;
+  font-weight: bold;
+  color: #B22222;
+  padding: 0 10px;
+}
 
-
+/* ---------------- DARK MODE ---------------- */
 #dark-btn{
     width: 40px;
     position: fixed;
@@ -267,7 +268,6 @@ select { /* SEXO */
 
 #dark-btn:hover {
     transform: translateY(-5px);
-
 }
 
 #light-btn{
@@ -283,6 +283,7 @@ select { /* SEXO */
 #light-btn:hover {
     transform: translateY(-5px);
 }
+
 /* Tema escuro global */
 body.dark-mode {
   background-color: #1e1e1e;
@@ -299,29 +300,28 @@ body.dark-mode * {
 /* Sobrescreve elementos brancos específicos */
 body.dark-mode header,
 body.dark-mode nav,
-body.dark-mode section
- {
+body.dark-mode section {
   background-color: #1e1e1e ;
- 
 }
-body.dark-mode p{
+
+body.dark-mode p {
     color: #f1f1f1; /* Cor do texto em modo escuro */
- } 
- 
+} 
+
 body.dark-mode h1 {
     color: #B22222; /* Cor do título em modo escuro */
 }
+
 body.dark-mode h2 {
     color: #b22222; /* Cor do texto em modo escuro */
 }
 
-
 body.dark-mode .btn{
     background-color: #8B0000;
 }
+
 body.dark-mode .btn:hover {
     background-color: #250404;
- 
 }
 
 body.dark-mode .container {
@@ -329,36 +329,15 @@ body.dark-mode .container {
     color: #f1f1f1; /* texto claro */
 }
 
-#dark-btn{
-    width: 40px;
-    position: fixed;
-    top: 300px;
-    right: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    transition: background-color 0.3s ease;
+body.dark-mode fieldset {
+  border-color: #8B0000;
 }
 
-#dark-btn:hover {
-    transform: translateY(-5px);
-
+body.dark-mode legend {
+  color: #B22222;
 }
 
-#light-btn{
-    width: 40px;
-    position: fixed;
-    top: 300px;
-    right: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    transition: background-color 0.3s ease;
-}
-
-#light-btn:hover {
-    transform: translateY(-5px);
-}
-
-
+/* ---------------- RESPONSIVIDADE ---------------- */
 @media (max-width: 768px) {
   .container-navbar {
     flex-direction: row;
@@ -368,14 +347,12 @@ body.dark-mode .container {
   }
 
   .usuario-box {
-
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     cursor: pointer;
     margin-left: auto;
-   
   }
 
   #usuario {
@@ -431,38 +408,38 @@ body.dark-mode .container {
     padding: 8px;
   }
 
-  
-    .dropdown {
+  .dropdown {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
   }
+
   .dropdown > a{
     padding: 5px 0;
-    white-space: nowrap; /* Impede quebra de linha */
+    white-space: nowrap;
   }
 }
 
 @media (max-width: 480px) {
   body {
-    padding-top: 210px; /* também ajustado aqui */
+    padding-top: 210px;
   }
- .container-navbar {
+
+  .container-navbar {
     padding: 8px 15px;
   }
-.opcoes{
- height:100px;
 
-}
+  .opcoes{
+    height:100px;
+  }
+
   .nav-esquerda {
     gap: 1px;
-    
   }
 
   .nav-esquerda a, .dropdown > a {
     font-size: 10px;
-
   }
 
   #usuario {
@@ -496,11 +473,9 @@ body.dark-mode .container {
     padding: 8px;
   }
 
-  
   .dropdown {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-
 }

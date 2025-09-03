@@ -1,31 +1,33 @@
-
+/* ====================== RESET ====================== */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+/* ====================== BODY ====================== */
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #F3E9DA; /* bege suave */
-   
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #fff, #f3e9da, #ffe7e0);
+  background-size: 400% 400%;
+  animation: gradientBG 20s ease infinite;
 }
 
-
-.opcoes {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #B22222; /* vermelho institucional */
-  padding: 30px 0;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+.opcoes { /* NAV */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #B22222; /* vermelho institucional */
+    padding: 30px 0;
+    text-align: left;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 }
 
 .container-navbar {
@@ -35,7 +37,7 @@ body {
   padding: 0 30px;
 }
 
-/* LINKS ESQUERDA */
+
 .nav-esquerda {
   display: flex;
   align-items: center;
@@ -86,7 +88,7 @@ body {
   display: block;
 }
 
-
+/* ÍCONE DIREITA */
 #usuario{
   width: 40px;
   height: 30px;
@@ -95,38 +97,24 @@ body {
   transition: all 0.3s ease;
  
 }
-
-#usuario img {
- cursor: pointer;
- 
-}
 #usuario:hover {
   transform: translateY(-5px);
-  cursor: pointer;
 
 }
+
 
 .usuario-box {
   position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-right: 5px;
 }
 
-
-
-.usuario-box img {
-  width: 30px;
-  height: 20px;
-}
 #nome-usuario {
   color: white;
   font-weight: bold;
   letter-spacing: 1px;
-  margin: 0 5px;
 }
-
 
 #btn-sair {
   display: flex;
@@ -149,389 +137,257 @@ body {
 }
 
 #btn-sair:hover {
-   background-color: #B22222;
-   transform: translateY(-5px);
+  background-color: #8B0000;
 }
 
+/* Estilo do dropdown (submenu) */
+
+/*.opcoes a { /* NAV TEXTO */
+    /*text-decoration: none;
+    margin: 0 25px;
+    
+}*/
 
 
-
-.text {
+.text { /* NAV TEXTO */
     font-family: Arial, Helvetica, sans-serif;
     padding: 6px;
     margin: 0 10px;
     text-decoration: none;
-    color: white;
+    color: rgb(255, 255, 255);
     letter-spacing: 2px;
     font-size: 17px;
 }
 
-.opcoes a:hover {
-    color: #8B0000; /* vermelho escuro no hover */
+
+/* ====================== LOGIN ====================== */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
-/* Container do login */
 .container-login {
-    background: #FFF9F9; /* branco rosado */
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
+  background-color: #FFF9F9;
+  padding: 40px 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  width: 320px;
+  text-align: center;
+  position: relative;
+  animation: slideFadeIn 0.7s ease forwards;
+  opacity: 0;
+  margin-top: 20px; /* espaço adequado do topo */
 }
 
 /* Título */
-.container h2 {
-    margin-bottom: 20px;
-    color: #B22222;
+.container-login h2 {
+  margin-bottom: 35px;
+  color: #B22222;
 }
 
-/* Formulário */
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* INPUT GROUP */
+.input-group {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
-form label.nome {
-    align-self: flex-start;
-    font-size: 15px;
-    margin-left: 15px;
-    margin-bottom: 5px;
-    color: #333;
+.input-group input {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  border-radius: 5px;
+  border: 2px solid #B22222;
+  background-color: #fff;
+  transition: all 0.3s ease;
 }
 
-.input {
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 2px solid #B22222;
-    border-radius: 5px;
-    background-color: #ffffff;
+.input-group input:focus {
+  border-color: #8B0000;
+  box-shadow: 0 0 10px rgba(178,34,34,0.4);
+  outline: none;
 }
 
-/* Botão de login */
+/* ÍCONES NOS INPUTS */
+.input-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #B22222;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.input-group input:focus + .input-icon {
+  color: #8B0000;
+  transform: scale(1.2);
+}
+
+/* BOTÃO */
 .btn {
-    width: 100%;
-    max-width: 220px;
-    height: 40px;
-    background-color: #B22222;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: medium;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  padding: 12px;
+  background-color: #B22222;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .btn:hover {
-    background-color: #8B0000;
-    transform: translateY(-3px); /* agora sim sobe no hover */
+  background-color: #8B0000;
+  transform: scale(1.05);
 }
 
-/* Link de cadastro */
+/* CADASTRO */
 .cadastro {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    margin-top: 10px;
-    font-size: 14px;
+  margin-top: 15px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
 }
 
 .cadastro a {
-    color: #B22222;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
+  color: #B22222;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .cadastro a:hover {
-    text-decoration: underline;
-    background-color: #8B0000;
-    color: white;
-    padding: 2px 5px;
-    border-radius: 4px;
+  color: white;
+  background-color: #8B0000;
+  padding: 2px 5px;
+  border-radius: 4px;
 }
 
-/* Ícones sociais */
+/* SOCIAL LOGIN */
 .social {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 15px;
 }
 
-.img {
-    width: 35px;
-    height: auto;
-    cursor: pointer;
-    transition: transform 0.3s;
+.social img {
+  width: 35px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-.img:hover {
-    transform: scale(1.1);
+.social img:hover {
+  transform: scale(1.2);
 }
 
-/* Responsividade */
-
-
-@media (max-width: 768px) {
-  .container-navbar {
-    flex-direction: row;
-    justify-content: flex-start; 
-    align-items: center;
-    padding: 10px 20px;
-    height: 50px;
-  
-  }
-
-  .usuario-box {
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-    cursor: pointer;
-    margin-left: 4px;
-   
-  }
-
-  #usuario {
-    width: 10px;
-    height: 20px;
-  }
-
-  .nav-esquerda {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-     gap: 2px;
-  }
-
-  .nav-esquerda a, .dropdown > a {
-    font-size: 15px;
-    padding: 5px 0;
-    width: 100%;
-    gap: 1px;
-    white-space: nowrap; /* Impede quebra de linha */
-    
-  }
-
-  .dropdown-content {
-    position: absolute;
-    min-width: 160px;
-    background-color: #B22222;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    z-index: 1001;
-  }
-
-  .dropdown {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
-  .dropdown > a{
-    padding: 5px 0;
-    white-space: nowrap; /* Impede quebra de linha */
-  }
+/* DARK/LIGHT MODE BUTTON */
+#dark-btn, #light-btn {
+  width: 40px;
+  position: fixed;
+  top: 300px;
+  right: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-@media (max-width: 480px) {
-  .container-navbar {
-    padding: 8px 15px;
-  }
-.opcoes{
- height:100px;
- flex-direction: row;
-
-}
-  .nav-esquerda {
-    gap: 1px;
-    width: 100%;
-    white-space: nowrap; /* Impede quebra de linha */
-    
-  }
-
-  .nav-esquerda a, .dropdown > a {
-    font-size: 10px;
-
-  }
-
-  .dropdown {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  #usuario {
-    width: 15px;
-    height: 24px;
-    display: flex;
-    flex-wrap: wrap;
-  }
+#dark-btn:hover, #light-btn:hover {
+  transform: translateY(-5px);
 }
 
-
-#dark-btn{
-    width: 40px;
-    position: fixed;
-    top: 300px;
-    right: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    transition: background-color 0.3s ease;
-}
-
-#dark-btn:hover {
-    transform: translateY(-5px);
-
-}
-
-#light-btn{
-    width: 40px;
-    position: fixed;
-    top: 300px;
-    right: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    transition: background-color 0.3s ease;
-}
-
-#light-btn:hover {
-    transform: translateY(-5px);
-}
-/* Tema escuro global */
+/* ====================== DARK MODE ====================== */
 body.dark-mode {
-  background-color: #1e1e1e;
+  background: #1e1e1e;
   color: #f1f1f1;
+  animation: none; /* remove animação de gradiente */
 }
 
-/* Herdar cor do texto para tudo */
-body.dark-mode * {
-  color: inherit ;
-
-  border-color: #555;
-}
-/* Garantir que o <main> siga o tema escuro */
-body.dark-mode main {
-  background-color: #1e1e1e;
+body.dark-mode .opcoes {
+  background-color: #222; /* navbar escura */
 }
 
-
-/* Sobrescreve elementos brancos específicos */
-body.dark-mode header,
-body.dark-mode nav,
-body.dark-mode section
- {
-  background-color: #1e1e1e ;
- 
-}
-
-body.dark-mode .btn-cardapio {
-    background-color: #B22222; /
-}
- body.dark-mode p{
-    color: #f1f1f1; /* Cor do texto em modo escuro */
- } 
- 
-body.dark-mode h1 {
-    color: #B22222; /* Cor do título em modo escuro */
-}
-body.dark-mode h2 {
-    color: #fff; /* Cor do texto em modo escuro */
-}
-
-body.dark-mode .item {
-    background-color: #2c2c2c; /* Fundo dos itens em modo escuro */
-    color: #f1f1f1; /* Cor do texto dos itens em modo escuro */
-}
-
-body.dark-mode .container-login{
-    background-color: #2c2c2c;
-}
-
-body.dark-mode .btn{
-   background-color: #8B0000;
-}
-
-body.dark-mode label {
-    color: #f1f1f1;
-  
-}
-
-
-.dark-mode select {
-    color: #fff;
-    background-color: #2c2c2c;
-    border: 1px solid #8B0000;
-  
-}
-
-.dark-mode input {
-    background-color: #2c2c2c;
-    color: #fff;
-   ;
-}
-
-
-body.dark-mode .dropdown-content {
+body.dark-mode .container-login {
   background-color: #2c2c2c;
 }
 
-.dark-mode .lista-pedido{
-    background: #2c2c2c;
-   
+body.dark-mode input {
+  background-color: #2c2c2c;
+  color: #fff;
+  border-color: #555;
 }
 
-.dark-mode .pedido{
-    background-color: #2c2c2c;
+body.dark-mode .input-icon {
+  color: #f1f1f1;
 }
 
-.dark-mode .total-pedido{
-    background-color: #2c2c2c;
-    color: #fff;
+body.dark-mode .btn {
+  background-color: #8B0000;
 }
 
-#dark-btn{
-    width: 40px;
-    position: fixed;
-    top: 300px;
-    right: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    transition: background-color 0.3s ease;
+body.dark-mode .btn:hover {
+  background-color: #250404;
 }
 
-#dark-btn:hover {
-    transform: translateY(-5px);
-
+body.dark-mode .cadastro a {
+  color: #B22222;
 }
 
-#light-btn{
-    width: 40px;
-    position: fixed;
-    top: 300px;
-    right: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    transition: background-color 0.3s ease;
+/* ====================== ANIMAÇÕES ====================== */
+@keyframes slideFadeIn {
+  0% { transform: translateY(-30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
-#light-btn:hover {
-    transform: translateY(-5px);
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.btn-adicionar{
-    background-color: #8B0000;
-    color: white;
-    border-radius: 6px;
-    font-size: 13px;
-    width: 70px;
+/* ====================== RESPONSIVIDADE ====================== */
+@media screen and (max-width: 768px) {
+  .container-login {
+    width: 90%;
+    padding: 30px 20px;
+  }
+
+  .nav-esquerda {
+    gap: 15px;
+  }
+
+  .nav-esquerda a {
+    font-size: 15px;
+  }
+
+  #usuario {
+    width: 35px;
+    height: 25px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container-login {
+    width: 95%;
+    padding: 25px 15px;
+  }
+
+  .nav-esquerda {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-esquerda a {
+    font-size: 14px;
+  }
+
+  #usuario {
+    width: 30px;
     height: 20px;
-    cursor: pointer;
+  }
 }

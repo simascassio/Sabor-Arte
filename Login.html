@@ -1,48 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de Login</title>
-    <link rel="stylesheet" type="text/css" href="css/login.css">
-     <script src="js/dark.js" defer></script>
-    <script src="js/login.js" defer></script>
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tela de Login</title>
+  <link rel="stylesheet" href="css/login.css">
+  <script src="js/dark.js" defer></script>
+  <script src="js/login.js" defer></script>
 </head>
 <body>
-     <header class="opcoes">
-  <nav class="container-navbar">
-    <div class="nav-esquerda">
-      <a href="Home.html" class="text">Home</a>
-      <a href="Home.html#redes" class="text">Contato</a>
-      <a href="Login.html" class="text">Login</a>
-      <a href="finalizar.html" class="text">Pedido</a>
-
-      <div class="dropdown">
-        <a href="Cardapio.html" class="text">Cardápio</a>
-        <div class="dropdown-content">
-          <a href="Cardapio.html">Pizzas</a>
-          <a href="Cardapio.html#bebidas">Sobremesas</a>
-          <a href="Cardapio.html#sobremesas">Bebidas</a>
+  <!-- Navbar -->
+  <header class="opcoes">
+    <nav class="container-navbar">
+      <div class="nav-esquerda">
+        <a href="Home.html" class="text">Home</a>
+        <a href="Home.html#redes" class="text">Contato</a>
+        <a href="Login.html" class="text">Login</a>
+        <a href="finalizar.html" class="text">Pedido</a>
+        <div class="dropdown">
+          <a href="Cardapio.html" class="text">Cardápio</a>
+          <div class="dropdown-content">
+            <a href="Cardapio.html">Pizzas</a>
+            <a href="Cardapio.html#bebidas">Sobremesas</a>
+            <a href="Cardapio.html#sobremesas">Bebidas</a>
+          </div>
         </div>
       </div>
-      <div class="usuario-box" onclick="alternarSair()"></div>   </div>
-       <span id="nome-usuario"></span>
-       <img id="usuario" src="https://img.icons8.com/ios-filled/50/FFFFFF/user-male-circle.png" alt="Usuário">
-       <button id="btn-sair" onclick="sair()">Sair</button>
-    </div>
+      <div class="usuario-box" onclick="alternarSair()">
+        <span id="nome-usuario"></span>
+        <img id="usuario" src="https://img.icons8.com/ios-filled/50/FFFFFF/user-male-circle.png" alt="Usuário">
+        <button id="btn-sair" onclick="sair()">Sair</button>
+      </div>
+    </nav>
+  </header>
 
-  </nav>
-</header>
-    
-    <main>
-     <section class="container-login">
+  <!-- Main login -->
+  <main>
+    <canvas id="particles"></canvas>
+
+    <section class="container-login">
       <h2>LOGIN</h2>
       <form onsubmit="logar(event)">
-        <label class="nome">Login</label>
-        <input type="text" id="input-nome-login" class="input" placeholder="Digite seu Login" required />
-        <label class="nome">Senha</label>
-        <input type="password" id="input-senha-login" class="input" placeholder="Senha" required />
+        <div class="input-group">
+          <label for="input-nome-login">Login</label>
+          <input type="text" id="input-nome-login" class="input" placeholder="Digite seu login" required>
+          <span class="input-icon">&#128100;</span>
+        </div>
+
+        <div class="input-group">
+          <label for="input-senha-login">Senha</label>
+          <input type="password" id="input-senha-login" class="input" placeholder="Digite sua senha" required>
+          <span class="input-icon">&#128274;</span>
+        </div>
+
         <button type="submit" class="btn">Entrar</button>
       </form>
 
@@ -50,20 +60,172 @@
         <p>Não tem uma conta?</p>
         <a href="cadastro.html">Cadastre-se</a>
       </div>
-    
-            <div class="social">
-                <img src="imagens/google.svg" alt="Google Login" class="img">
-                <img src="imagens/fcb.svg" alt="Facebook Login" class="img">
-            </div> 
-        </section>
 
-         <!-- Botão para ativar Dark Mode -->
-      <img id="dark-btn" src="https://cdn-icons-png.flaticon.com/128/6077/6077517.png" alt="Ativar tema escuro">
+      <div class="social">
+        <img src="imagens/google.svg" alt="Google Login">
+        <img src="imagens/fcb.svg" alt="Facebook Login">
+      </div>
+    </section>
 
-  <!-- Botão para voltar ao tema claro (escondido inicialmente) -->
-      <img id="light-btn" src="https://cdn-icons-png.flaticon.com/128/6077/6077095.png" alt="Ativar tema claro" style="display: none;">
-</section>
-        
-    </main>
+    <!-- Botões Dark Mode -->
+    <img id="dark-btn" src="https://cdn-icons-png.flaticon.com/128/6077/6077517.png" alt="Ativar tema escuro">
+    <img id="light-btn" src="https://cdn-icons-png.flaticon.com/128/6077/6077095.png" alt="Ativar tema claro" style="display:none;">
+  </main>
+
+  <script>
+   // ---------- ANIMAÇÃO DE ENTRADA DOS INPUTS E BOTÃO ----------
+const loginContainer = document.querySelector('.container-login');
+const inputs = loginContainer.querySelectorAll('input');
+const btn = loginContainer.querySelector('button');
+
+// Inicializa container invisível
+loginContainer.style.opacity = 0;
+setTimeout(() => {
+    loginContainer.style.opacity = 1;
+}, 100);
+
+// Animação sequencial dos inputs
+inputs.forEach((input, i) => {
+    input.style.transform = 'translateY(-20px)';
+    input.style.opacity = 0;
+    setTimeout(() => {
+        input.style.transition = 'all 0.5s ease';
+        input.style.transform = 'translateY(0)';
+        input.style.opacity = 1;
+    }, 200 + i * 150);
+});
+
+// Animação do botão
+btn.style.transform = 'translateY(-20px)';
+btn.style.opacity = 0;
+setTimeout(() => {
+    btn.style.transition = 'all 0.5s ease';
+    btn.style.transform = 'translateY(0)';
+    btn.style.opacity = 1;
+}, 500);
+
+// ---------- DARK MODE ----------
+const darkBtn = document.getElementById('dark-btn');
+const lightBtn = document.getElementById('light-btn');
+
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+
+    if(document.body.classList.contains('dark-mode')){
+        darkBtn.style.display = 'none';
+        lightBtn.style.display = 'block';
+    } else {
+        darkBtn.style.display = 'block';
+        lightBtn.style.display = 'none';
+    }
+
+    initParticles();
+}
+
+darkBtn.addEventListener('click', toggleDarkMode);
+lightBtn.addEventListener('click', toggleDarkMode);
+
+// ---------- HOVER DOS ÍCONES DE LOGIN ----------
+const inputIcons = document.querySelectorAll('.input-icon');
+inputIcons.forEach(icon => {
+    icon.style.cursor = 'pointer'; // restaurando cursor pointer
+    icon.addEventListener('mouseenter', () => {
+        icon.style.transform = 'translateY(5px) scale(1.2)';
+    });
+    icon.addEventListener('mouseleave', () => {
+        icon.style.transform = 'translateY(-50%) scale(1)';
+    });
+});
+
+// Partículas
+const canvas = document.createElement('canvas');
+document.body.appendChild(canvas);
+canvas.style.position = 'fixed';
+canvas.style.top = 0;
+canvas.style.left = 0;
+canvas.style.width = '100%';
+canvas.style.height = '100%';
+canvas.style.zIndex = '-1';
+canvas.style.pointerEvents = 'none';
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particlesArray = [];
+let mouse = { x: null, y: null };
+window.addEventListener('mousemove', e => { mouse.x = e.x; mouse.y = e.y; });
+
+class Particle {
+    constructor(x, y, size, color, speedX, speedY){
+        this.x = x;
+        this.y = y;
+        this.size = size;
+        this.baseSize = size;
+        this.color = color;
+        this.speedX = speedX;
+        this.speedY = speedY;
+    }
+    draw(){
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+    }
+    update(){
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if(this.x<0 || this.x>canvas.width) this.speedX*=-1;
+        if(this.y<0 || this.y>canvas.height) this.speedY*=-1;
+
+        // Interação com mouse no Dark Mode
+        if(document.body.classList.contains('dark-mode')){
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let distance = Math.sqrt(dx*dx + dy*dy);
+            if(distance < 100){
+                this.size = this.baseSize + 2; // leve aumento
+                this.color = 'rgba(255,255,255,0.8)';
+            } else {
+                this.size = this.baseSize;
+                this.color = 'rgba(150,150,150,0.6)';
+            }
+        }
+    }
+}
+
+function initParticles(){
+    particlesArray = [];
+    const dark = document.body.classList.contains('dark-mode');
+    const color = dark ? 'rgba(150,150,150,0.6)' : 'rgba(100,0,0,0.4)';
+    for(let i=0;i<80;i++){ // quantidade de partículas
+        let size=Math.random()*3 + 1; // tamanho pequeno (1 a 4px)
+        let x=Math.random()*canvas.width;
+        let y=Math.random()*canvas.height;
+        let speedX=(Math.random()-0.5)*0.7;
+        let speedY=(Math.random()-0.5)*0.7;
+        particlesArray.push(new Particle(x,y,size,color,speedX,speedY));
+    }
+}
+
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particlesArray.forEach(p=>{
+        p.update();
+        p.draw();
+    });
+    requestAnimationFrame(animate);
+}
+
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    initParticles();
+});
+
+initParticles();
+animate();
+
+
+  </script>
 </body>
 </html>
