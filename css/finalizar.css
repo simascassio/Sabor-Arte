@@ -95,6 +95,17 @@ body {
   display: block;
 }
 
+.text {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 6px;
+    width: 100%;
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+    letter-spacing: 2px;
+    font-size: 17px;
+}
+
 
 #usuario{
   width: 40px;
@@ -507,13 +518,13 @@ body.dark-mode .btn {
   margin-top: 0; /* Remove margem para alinhar com os links */
 }
 
-.icones-redes img {
+#icones-redes img {
   width: 28px;
   height: 30px;
   transition: transform 0.2s ease;
 }
 
-.icones-redes img:hover {
+#icones-redes img:hover {
   transform: scale(1.1);
 }
 
