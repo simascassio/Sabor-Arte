@@ -602,6 +602,11 @@ body.dark-mode section
  
 }
 
+  body.dark-mode .footer-contato {
+    background-color: #1e1e1e;
+  }
+
+
 body.dark-mode .btn-cardapio {
     background-color: #B22222; /
 }
