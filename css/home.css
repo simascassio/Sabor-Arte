@@ -525,7 +525,7 @@ body.dark-mode p{
 .footer-links a {
   text-decoration: none;
   color: #797575;
-  font-size: 0.7rem;
+  font-size: 15px;
   cursor: pointer;
   transition: transform 0.2s ease;
 }
@@ -551,8 +551,10 @@ body.dark-mode p{
 }
 
 .info-contato h3 {
-  margin-bottom: 5px; /* Reduz o espaço abaixo de "Contato" */
-  font-size: 0.9rem;
+  margin-bottom: 12px; /* Reduz o espaço abaixo de "Contato" */
+  font-size: 1.5rem;
+  color: #666;
+  font-weight: 400;
 }
 
 .icones-redes {
@@ -573,7 +575,7 @@ body.dark-mode p{
 }
 
 #copy {
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   color: #666;
   margin-top: 20px;
 
