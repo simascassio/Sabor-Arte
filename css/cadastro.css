@@ -86,8 +86,14 @@ body { /* FORA */
   display: block;
 }
 
+a:hover {
+  color: #8B0000;
+ 
+}
+
 /* ÍCONE DIREITA */
 #usuario{
+  display: none;
   width: 40px;
   height: 30px;
   object-fit: contain;
@@ -115,7 +121,7 @@ body { /* FORA */
 }
 
 #btn-sair {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   position: absolute;

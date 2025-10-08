@@ -108,6 +108,7 @@ body {
 
 
 #usuario{
+ display: none;
   width: 40px;
   height: 30px;
   object-fit: contain;
@@ -118,6 +119,10 @@ body {
 #usuario:hover {
   transform: translateY(-5px);
 
+}
+a:hover {
+  color: #8B0000;
+ 
 }
 
 
@@ -140,7 +145,7 @@ body {
 }
 
 #btn-sair {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   position: absolute;
@@ -404,9 +409,14 @@ body.dark-mode * {
 
 /* Sobrescreve elementos brancos específicos */
 body.dark-mode header,
-body.dark-mode nav{
-    background-color: #2c2c2c;;
+body.dark-mode footer,
+body.dark-mode nav,
+body.dark-mode section{
+   color: #f1f1f1;
+  background-color: #1e1e1e ;
+ 
 }
+
 body.dark-mode section{
  
   background-color:  #1e1e1e;

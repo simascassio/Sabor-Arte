@@ -90,6 +90,7 @@ body {
 
 /* ÍCONE DIREITA */
 #usuario{
+  display: none;
   width: 40px;
   height: 30px;
   object-fit: contain;
@@ -110,6 +111,11 @@ body {
   gap: 10px;
 }
 
+ a:hover {
+  color: #8B0000;
+
+}
+
 #nome-usuario {
   color: white;
   font-weight: bold;
@@ -117,7 +123,7 @@ body {
 }
 
 #btn-sair {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   position: absolute;
@@ -150,11 +156,12 @@ body {
 
 
 .text { /* NAV TEXTO */
-    font-family: Arial, Helvetica, sans-serif;
+     font-family: Arial, Helvetica, sans-serif;
     padding: 6px;
+    width: 100%;
     margin: 0 10px;
     text-decoration: none;
-    color: rgb(255, 255, 255);
+    color: white;
     letter-spacing: 2px;
     font-size: 17px;
 }
@@ -168,6 +175,8 @@ main {
   justify-content: center;
   width: 100%;
 }
+
+
 
 .container-login {
   background-color: #FFF9F9;
@@ -193,6 +202,11 @@ main {
   position: relative;
   width: 100%;
   margin-bottom: 20px;
+}
+
+.input-group label{
+  font-size: 17px;
+  margin-bottom: 10px;
 }
 
 .input-group input {

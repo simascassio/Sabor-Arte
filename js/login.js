@@ -1,19 +1,21 @@
-// Executa assim que a página carrega
 window.onload = () => {
   const nomeUsuario = localStorage.getItem("usuarioLogado");
   const spanNome = document.getElementById("nome-usuario");
   const btnSair = document.getElementById("btn-sair");
-  const linkLogin = document.querySelector('a[href="Login.html"]');
+  const linkLogin = document.querySelector('.usuario-box a[href="Login.html"]');
+  const icon = document.getElementById("usuario");
 
   if (nomeUsuario) {
-    // Se estiver logado, mostra nome, oculta o botão Login
+    // Usuário logado: mostra ícone e nome, oculta "Login"
     if (spanNome) spanNome.textContent = nomeUsuario;
     if (linkLogin) linkLogin.style.display = "none";
-    if (btnSair) btnSair.style.display = "none";
+    if (icon) icon.style.display = "inline-block"; // mostra ícone
+    if (btnSair) btnSair.style.display = "none"; // botão sair oculto até clicar
   } else {
-    // Se não estiver logado, limpa tudo
+    // Usuário não logado: mostra "Login", oculta ícone e botão sair
     if (spanNome) spanNome.textContent = "";
     if (linkLogin) linkLogin.style.display = "inline-block";
+    if (icon) icon.style.display = "none"; // oculta ícone
     if (btnSair) btnSair.style.display = "none";
   }
 };
@@ -28,6 +30,8 @@ function logar(event) {
     window.location.href = "Home.html"; // redireciona para a página inicial
   }
 }
+
+// Alterna visibilidade do botão sair ao clicar no ícone
 function alternarSair() {
   const btnSair = document.getElementById("btn-sair");
   btnSair.style.display = (btnSair.style.display === "block") ? "none" : "block";
@@ -36,6 +40,6 @@ function alternarSair() {
 // Limpa o login
 function sair() {
   localStorage.removeItem("usuarioLogado");
-  window.location.reload(); // recarrega a página para atualizar a navbar
+  window.location.reload(); // atualiza navbar
 }
 
