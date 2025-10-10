@@ -612,7 +612,7 @@ body.dark-mode p{
      gap: 3px;
   }
 
-  .nav-esquerda a, .dropdown > a {
+  .nav-esquerda a, .dropdown  a {
     font-size: 15px;
     padding: 5px 0;
     width: fit-content;
@@ -667,6 +667,15 @@ body.dark-mode {
     padding: 5px 0;
     white-space: nowrap; /* Impede quebra de linha */
   }
+
+  .text {
+    font-size: 15px;
+    margin: 0 5px;
+  }
+
+  .dropdown-content a {
+    display: none;
+  }
 }
 
 
@@ -681,6 +690,10 @@ body.dark-mode {
  height:100px;
 
 }
+
+.dropdown-content a {
+    display: none;
+  }
   .nav-esquerda {
     gap: 1px;
     
@@ -732,6 +745,11 @@ body.dark-mode {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .text {
+    font-size: 11px;
+    
   }
 
 }

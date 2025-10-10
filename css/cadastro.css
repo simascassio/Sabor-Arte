@@ -347,18 +347,20 @@ body.dark-mode legend {
 @media (max-width: 768px) {
   .container-navbar {
     flex-direction: row;
-    justify-content: flex-start; /* alinhado à esquerda */
+    justify-content: center; 
     align-items: center;
     padding: 10px 20px;
   }
 
   .usuario-box {
+
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     cursor: pointer;
     margin-left: auto;
+   
   }
 
   #usuario {
@@ -369,10 +371,11 @@ body.dark-mode legend {
   .nav-esquerda {
     display: flex;
     flex-wrap: wrap;
-    gap: 3px;
+    justify-content: center;
+     gap: 3px;
   }
 
-  .nav-esquerda a, .dropdown > a {
+  .nav-esquerda a, .dropdown  a {
     font-size: 15px;
     padding: 5px 0;
     width: fit-content;
@@ -384,6 +387,32 @@ body.dark-mode legend {
     background-color: #B22222;
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     z-index: 1001;
+  }
+
+
+ 
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  width: 100vw; /* força 100% da viewport */
+  overflow-x: hidden; /* evita rolagem lateral */
+}
+
+
+  .dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .dropdown > a{
+    padding: 5px 0;
+    white-space: nowrap; /* Impede quebra de linha */
+  }
+
+  .text {
+    font-size: 15px;
+    margin: 0 5px;
   }
 
   .container {
@@ -413,18 +442,10 @@ body.dark-mode legend {
     font-size: 14px;
     padding: 8px;
   }
-
-  .dropdown {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+.dropdown-content a {
+    display: none;
   }
-
-  .dropdown > a{
-    padding: 5px 0;
-    white-space: nowrap;
-  }
+  
 }
 
 @media (max-width: 480px) {
@@ -435,17 +456,21 @@ body.dark-mode legend {
   .container-navbar {
     padding: 8px 15px;
   }
+.opcoes{
+ height:100px;
 
-  .opcoes{
-    height:100px;
-  }
-
+}
   .nav-esquerda {
     gap: 1px;
+    
   }
 
   .nav-esquerda a, .dropdown > a {
     font-size: 10px;
+
+  }
+  .dropdown-content a {
+    display: none;
   }
 
   #usuario {
@@ -455,10 +480,25 @@ body.dark-mode legend {
     flex-wrap: wrap;
   }
 
-  .container {
-    width: 95%;
-    padding: 30px 15px;
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  width: 100vw; /* força 100% da viewport */
+  overflow-x: hidden; /* evita rolagem lateral */
+}
+
+
+  .dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
+  .text {
+    font-size: 11px;
+    
+  }
+
 
   label {
     font-size: 13px;
@@ -479,9 +519,5 @@ body.dark-mode legend {
     padding: 8px;
   }
 
-  .dropdown {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+
 }

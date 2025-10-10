@@ -40,15 +40,22 @@ O site conta com funcionalidades como login de usuário, navegação intuitiva, 
 
 Sabor-Arte/
 │
-├─ index.html / Home.html
+├─  Home.html
 ├─ Cardapio.html
 ├─ finalizar.html
-├─ Login.html / cadastro.html
+├─ Login.html  
+├─ cadastro.html
+├─ erro.html
 │
 ├─ css/
 │ ├─ home.css
 │ ├─ login.css
-│ └─ outros arquivos CSS
+│ └─ finalizar.css
+│ ├─ erro.css
+│ ├─ cardapio.css
+│ └─ 
+  
+
 │
 ├─ js/
 │ ├─ dark.js
@@ -60,4 +67,9 @@ Sabor-Arte/
 │ └─ arquivos de imagens e ícones
 └─ README.md
 
+<<<<<<< HEAD
 link do site : sabor-artee.netlify.app
+=======
+
+sabor-artee.netlify.app
+>>>>>>> f026f53 (n)

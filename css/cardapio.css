@@ -186,11 +186,9 @@ body {
 @media (max-width: 768px) {
   .container-navbar {
     flex-direction: row;
-    justify-content: flex-start; 
+    justify-content: center; 
     align-items: center;
     padding: 10px 20px;
-    height: 50px;
-  
   }
 
   .usuario-box {
@@ -198,32 +196,32 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2px;
+    gap: 8px;
     cursor: pointer;
-    margin-left: 4px;
+    margin-left: auto;
    
   }
 
   #usuario {
-    width: 10px;
-    height: 20px;
+    width: 20px;
+    height: 30px;
   }
 
   .nav-esquerda {
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-     gap: 2px;
+    flex-wrap: wrap;
+    justify-content: center;
+     gap: 3px;
   }
 
-  .nav-esquerda a, .dropdown > a {
+  .nav-esquerda a, .dropdown  a {
     font-size: 15px;
     padding: 5px 0;
-  
+    width: fit-content;
   }
 
   .dropdown-content {
+    display: none;
     position: absolute;
     min-width: 160px;
     background-color: #B22222;
@@ -231,7 +229,28 @@ body {
     z-index: 1001;
   }
 
-    .dropdown {
+  .dropdown-content a {
+    display: none;
+  }
+  
+  body.dark-mode {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  width: 100vw; /* força 100% da viewport */
+  overflow-x: hidden; /* evita rolagem lateral */
+}
+
+}
+
+@media (max-width: 480px) {
+ 
+.opcoes{
+ height:100px;
+
+}
+
+
+  .dropdown {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -241,7 +260,16 @@ body {
     padding: 5px 0;
     white-space: nowrap; /* Impede quebra de linha */
   }
+
+  .text {
+    font-size: 15px;
+    margin: 0 5px;
+  }
 }
+
+
+
+
 
 @media (max-width: 480px) {
   .container-navbar {
@@ -253,8 +281,6 @@ body {
 }
   .nav-esquerda {
     gap: 1px;
-    width: 100%;
-    white-space: nowrap; /* Impede quebra de linha */
     
   }
 
@@ -270,13 +296,26 @@ body {
     flex-wrap: wrap;
   }
 
-  
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  width: 100vw; /* força 100% da viewport */
+  overflow-x: hidden; /* evita rolagem lateral */
+}
+
   .dropdown {
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
+  .text {
+    font-size: 11px;
+    
+  }
+
 }
+
 /* cardapio */
 
 /* Ajuste de container principal */
