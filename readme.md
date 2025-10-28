@@ -67,9 +67,5 @@ Sabor-Arte/
 │ └─ arquivos de imagens e ícones
 └─ README.md
 
-<<<<<<< HEAD
-link do site : sabor-artee.netlify.app
-=======
 
 sabor-artee.netlify.app
->>>>>>> f026f53 (n)

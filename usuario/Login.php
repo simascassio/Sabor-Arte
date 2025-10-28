@@ -13,21 +13,21 @@
   <header class="opcoes">
     <nav class="container-navbar">
       <div class="nav-esquerda">
-        <a href="Home.html" class="text">Home</a>
-        <a href="Home.html#redes" class="text">Contato</a>
+        <a href="Home.php" class="text">Home</a>
+        <a href="Home.php#redes" class="text">Contato</a>
        
-        <a href="finalizar.html" class="text">Pedido</a>
+        <a href="finalizar.php" class="text">Pedido</a>
         <div class="dropdown">
-          <a href="Cardapio.html" class="text">Cardápio</a>
+          <a href="Cardapio.php" class="text">Cardápio</a>
           <div class="dropdown-content">
-            <a href="Cardapio.html">Pizzas</a>
-            <a href="Cardapio.html#bebidas">Sobremesas</a>
-            <a href="Cardapio.html#sobremesas">Bebidas</a>
+            <a href="Cardapio.php">Pizzas</a>
+            <a href="Cardapio.php#bebidas">Sobremesas</a>
+            <a href="Cardapio.php#sobremesas">Bebidas</a>
           </div>
         </div>
       </div>
       <div class="usuario-box" onclick="alternarSair()">
-         <a href="Login.html" class="text">Login</a>
+         <a href="Login.php" class="text">Login</a>
         <span id="nome-usuario"></span>
         <img id="usuario" src="https://img.icons8.com/ios-filled/50/FFFFFF/user-male-circle.png" alt="Usuário">
         <button id="btn-sair" onclick="sair()">Sair</button>
@@ -59,7 +59,7 @@
 
       <div class="cadastro">
         <p>Não tem uma conta?</p>
-        <a href="cadastro.html">Cadastre-se</a>
+        <a href="cadastro.php">Cadastre-se</a>
       </div>
 
       <div class="social">
