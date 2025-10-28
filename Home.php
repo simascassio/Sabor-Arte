@@ -39,7 +39,7 @@
         <section class="container-1">
             <div class="conteudo-texto">
                 <h1>Bateu a fome ? A gente resolve com pizza !</h1>
-                <a href="Cardapio.html" class="btn-cardapio"> Confira o Cardápio</a>
+                <a href="Cardapio.php" class="btn-cardapio"> Confira o Cardápio</a>
                 
             </div>
             </div> 
