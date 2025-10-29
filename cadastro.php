@@ -11,17 +11,12 @@ function limpar_texto($str, $allow_plus = false) {
 // Função para validar CPF
 function validar_cpf($cpf) {
     $cpf = preg_replace('/[^0-9]/', '', $cpf);
-
     if (strlen($cpf) != 11) {
         return false;
     }
-
-    // Elimina CPFs inválidos conhecidos (todos os números iguais)
     if (preg_match('/(\d)\1{10}/', $cpf)) {
         return false;
     }
-
-    // Calcula e confere os dois dígitos verificadores
     for ($t = 9; $t < 11; $t++) {
         $d = 0;
         for ($c = 0; $c < $t; $c++) {
@@ -32,22 +27,17 @@ function validar_cpf($cpf) {
             return false;
         }
     }
-
     return true;
 }
-
 // Conexão com o banco
 $mysqli = new mysqli("localhost", "root", "", "crud_clientes");
-
 if ($mysqli->connect_errno) {
     die("Falha na conexão: " . $mysqli->connect_error);
 }
-
 $erro = false;
 $mensagem = "";
 $sucesso = false; // Novo flag pra modal
-
-// Inicializa variáveis com defaults vazios (fora do POST pra evitar undefined)
+// Inicializa variáveis
 $nome = '';
 $email = '';
 $telefone = '';
@@ -61,9 +51,7 @@ $complemento = '';
 $endereco = '';
 $materno = '';
 $genero = '';
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Captura dos dados do formulário
     $nome = $_POST['nome'] ?? '';
     $email = $_POST['email'] ?? '';
     $telefone = $_POST['telefone'] ?? '';
@@ -77,13 +65,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $endereco = $_POST['endereco'] ?? '';
     $materno = $_POST['materno'] ?? '';
     $genero = $_POST['genero'] ?? '';
-
-    // Limpa caracteres não numéricos
-    $telefone = limpar_texto($telefone);
+    // Limpa caracteres não numéricos (permitindo formato para telefone)
+    $telefone = limpar_texto($telefone, true); // Permite ( ) - 
     $cpf = limpar_texto($cpf);
     $cep = limpar_texto($cep);
-
-    // Validações básicas
+    // Validações básicas (mantidas do seu PHP)
     if (empty($nome)) {
         $erro = true;
         $mensagem = "Preencha o nome completo.";
@@ -125,53 +111,39 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $url = "https://viacep.com.br/ws/$cep/json/";
         $dadosCep = @file_get_contents($url);
         $cepData = json_decode($dadosCep, true);
-
         if (!$dadosCep || isset($cepData['erro'])) {
             $erro = true;
             $mensagem = "CEP inválido ou não encontrado.";
         } else {
-            // Preenche automaticamente os campos de endereço com o que vier da API
             $endereco = $cepData['logradouro'] ?? $endereco;
         }
     }
-
-    // Formata a data
     $dataFormatada = !empty($nascimento) ? date('Y-m-d', strtotime($nascimento)) : null;
-
-    // Se não houver erros, salva no banco
-   if (!$erro) {
-    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-
-    $sql = "INSERT INTO clientes 
-        (nome, email, telefone, nascimento, CPF, CEP, Senha, num_casa, complemento, endereco, materno, genero)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("ssssssssssss", 
-        $nome, $email, $telefone, $dataFormatada, $cpf, $cep, $senhaHash, 
-        $num_casa, $complemento, $endereco, $materno, $genero
-    );
-
-    if ($stmt->execute()) {
-        $sucesso = true;
-        $mensagem = ""; // Remove mensagem verde duplicada
-        
-        // Limpa campos
-        $nome = $email = $telefone = $nascimento = $cpf = $cep = $senha = $confirmarSenha = 
-        $num_casa = $complemento = $endereco = $materno = $genero = '';
-    } else {
-        $erro = true;
-        $mensagem = "<p style='color:red; text-align:center;'><b>Erro ao salvar: " . $mysqli->error . "</b></p>";
+    if (!$erro) {
+        $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO clientes 
+            (nome, email, telefone, nascimento, CPF, CEP, Senha, num_casa, complemento, endereco, materno, genero)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("ssssssssssss", 
+            $nome, $email, $telefone, $dataFormatada, $cpf, $cep, $senhaHash, 
+            $num_casa, $complemento, $endereco, $materno, $genero
+        );
+        if ($stmt->execute()) {
+            $sucesso = true;
+            $mensagem = "";
+            $nome = $email = $telefone = $nascimento = $cpf = $cep = $senha = $confirmarSenha = $num_casa = $complemento = $endereco = $materno = $genero = '';
+        } else {
+            $erro = true;
+            $mensagem = "Erro ao salvar no banco: " . $mysqli->error; // Mostra erro real
+        }
+        $stmt->close();
     }
-    $stmt->close();
-}
-
     if ($erro && $mensagem) {
         $mensagem = "<p style='color:red;'><b>ERRO: $mensagem</b></p>";
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -180,17 +152,90 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <title>Cadastro</title>
     <link rel="stylesheet" href="./css/cadastro.css">
     <script src="js/dark.js" defer></script>
-     <script src="js/cadastro.js" defer></script>     
+    <script>
+        function validarFormulario() {
+            let valido = true;
+            const nome = document.getElementById("nome").value;
+            const materno = document.getElementById("materno").value;
+            const cpf = document.getElementById("cpf").value;
+            const email = document.getElementById("email").value;
+            const telefone = document.getElementById("telefone").value;
+            const senha = document.getElementById("senha").value;
+            const confirmarSenha = document.getElementById("confirmarSenha").value;
+            const nascimento = document.getElementById("nascimento").value;
+            const cep = document.getElementById("cep").value;
+            const endereco = document.getElementById("endereco").value;
+            const numerocasa = document.getElementById("numerocasa").value;
+
+            const regexNome = /^[a-zA-Z\s]{15,80}$/; // Manter original
+            const regexMaterno = /^[a-zA-Z\s]{15,80}$/; // Manter original
+            const regexCPF = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+            const regexEmail = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
+            const regexTelefone = /^\(\+55\)\d{2} \d{9}$/; // Manter original
+            const regexSenha = /^[a-zA-Z]{8}$/; // Manter original
+
+            // Limpar erros
+            const camposErro = ["nome", "materno", "cpf", "email", "telefone", "senha", "confirmar", "nascimento", "cep", "endereco", "numerocasa"];
+            camposErro.forEach(id => document.getElementById(`erro-${id}`).textContent = "");
+
+            // Validações (manter critérios originais)
+            if (!regexNome.test(nome)) {
+                document.getElementById("erro-nome").textContent = "Seu nome deve ter entre 15 e 80 letras.";
+                valido = false;
+            }
+            if (!regexMaterno.test(materno)) {
+                document.getElementById("erro-materno").textContent = "Nome materno deve ter entre 15 a 80 letras.";
+                valido = false;
+            }
+            if (!regexCPF.test(cpf)) {
+                document.getElementById("erro-cpf").textContent = "CPF inválido. Ex: 123.456.789-00";
+                valido = false;
+            }
+            if (!regexEmail.test(email)) {
+                document.getElementById("erro-email").textContent = "E-mail inválido.";
+                valido = false;
+            }
+            if (!regexTelefone.test(telefone)) {
+                document.getElementById("erro-telefone").textContent = "Formato de telefone celular inválido.";
+                valido = false;
+            }
+            if (!nascimento) {
+                document.getElementById("erro-nascimento").textContent = "Preencha a data de nascimento.";
+                valido = false;
+            }
+            if (!/^\d{5}-\d{3}$/.test(cep)) {
+                document.getElementById("erro-cep").textContent = "CEP deve seguir o formato 00000-000.";
+                valido = false;
+            }
+            // Validação: apenas se os campos estão preenchidos
+            if (!endereco.trim()) {
+                document.getElementById("erro-endereco").textContent = "Preencha o endereço.";
+                valido = false;
+            }   
+            if (!numerocasa.trim()) {
+                document.getElementById("erro-numerocasa").textContent = "Preencha o número da residência.";
+                valido = false;
+
+            if (!regexSenha.test(senha)) {
+                document.getElementById("erro-senha").textContent = "Senha deve conter exatamente 8 letras.";
+                valido = false;
+            }
+            if (senha !== confirmarSenha) {
+                document.getElementById("erro-confirmar").textContent = "As senhas não coincidem.";
+                valido = false;
+            }
+            return valido;
+        }
+    </script>
 </head>
 <body>
- <header class="opcoes">
+<!-- Seu header -->
+<header class="opcoes">
   <nav class="container-navbar">
     <div class="nav-esquerda">
       <a href="Home.php" class="text">Home</a>
       <a href="Home.php#redes" class="text">Contato</a>
-     
       <a href="finalizar.php" class="text">Pedido</a>
-
       <div class="dropdown">
         <a href="Cardapio.php" class="text">Cardápio</a>
         <div class="dropdown-content">
@@ -202,27 +247,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
     <div class="usuario-box" onclick="alternarSair()">
       <a href="Login.php" class="text">Login</a>
-
        <span id="nome-usuario"></span>
        <img id="usuario" src="https://img.icons8.com/ios-filled/50/FFFFFF/user-male-circle.png" alt="Usuário">
        <button id="btn-sair" onclick="sair()">Sair</button>
     </div>
   </nav>
 </header>
-
 <main>
     <section class="container">
         <h2>DADOS PESSOAIS</h2>
-      
-
-        <form method="POST" action="">
+        <?= $mensagem ?? "" ?> 
+        <form method="POST" action="" onsubmit="return validarFormulario();">
             <fieldset>
                 <legend>Dados pessoais</legend>
             <label for="nome">NOME COMPLETO</label>
             <input type="text" id="nome" name="nome" class="input" value="<?= htmlspecialchars($nome) ?>" required>
+            <span id="erro-nome" class="error"></span>
 
             <label for="materno">NOME MATERNO</label>
             <input type="text" id="materno" name="materno" class="input" value="<?= htmlspecialchars($materno) ?>" required>
+            <span id="erro-materno" class="error"></span>
 
             <label for="genero">GÊNERO</label>
             <select id="genero" name="genero" class="input" required>
@@ -236,60 +280,59 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <input type="date" id="nascimento" name="nascimento" class="input" 
                    min="1920-01-01" max="<?= date('Y-m-d') ?>"
                    value="<?= htmlspecialchars($nascimento) ?>">
+            <span id="erro-nascimento" class="error"></span>
 
             <label for="cpf">CPF</label>
             <input type="text" id="cpf" name="cpf" class="input" placeholder="000.000.000-00" value="<?= htmlspecialchars($cpf) ?>" required>
+            <span id="erro-cpf" class="error"></span>
             </fieldset>
             <fieldset>
             <legend>Contato</legend>
             <label for="email">E-MAIL</label>
             <input type="email" id="email" name="email" class="input" value="<?= htmlspecialchars($email) ?>" required>
+            <span id="erro-email" class="error"></span>
 
             <label for="telefone">TELEFONE CELULAR</label>
             <input type="text" id="telefone" name="telefone" class="input" placeholder="(11) 98888-8888" value="<?= htmlspecialchars($telefone) ?>" required>
-            
+            <span id="erro-telefone" class="error"></span>
             </fieldset>
-
             <fieldset>
                 <legend>Endereço</legend>
             <label for="cep">CEP</label>
             <input type="text" id="cep" name="cep" class="input" placeholder="00000-000" value="<?= htmlspecialchars($cep) ?>" required>
-            
+            <span id="erro-cep" class="error"></span>
 
-           
             <label for="endereco">ENDEREÇO</label>
             <input type="text" id="endereco" name="endereco" class="input" value="<?= htmlspecialchars($endereco) ?>">
+            <span id="erro-endereco" class="error"></span>
 
             <label for="numerocasa">NÚMERO</label>
             <input type="text" id="numerocasa" name="numerocasa" class="input" value="<?= htmlspecialchars($num_casa) ?>">
+            <span id="erro-numerocasa" class="error"></span>
 
             <label for="complemento">COMPLEMENTO</label>
             <input type="text" id="complemento" name="complemento" class="input" value="<?= htmlspecialchars($complemento) ?>">
             </fieldset>
-
             <fieldset>
                 <legend>Acesso ao sistema</legend>
-            
             <label for="senha">SENHA</label>
             <input type="password" id="senha" name="senha" class="input" required>
+            <span id="erro-senha" class="error"></span>
 
             <label for="confirmarSenha">CONFIRMAR SENHA</label>
             <input type="password" id="confirmarSenha" name="confirmarSenha" class="input" required>
+            <span id="erro-confirmar" class="error"></span>
             </fieldset>
-
             <button type="submit" class="btn">CADASTRAR</button>
             <button type="reset" class="btn">LIMPAR TELA</button>
         </form>
     </section>
 </main>
-
-
 <!-- Modal de Sucesso -->
 <div id="modal-sucesso" class="modal" style="display: none;">
     <div class="modal-conteudo">
-        <span class="fechar" id="fechar-modal">×</span>
-        <p>Cadastro realizado com sucesso!</p>
-       
+        <span class="fechar" id="fechar-modal">&times;</span>
+        <p>✅ Cadastro realizado com sucesso!</p>
     </div>
 </div>
 <script>
@@ -297,7 +340,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 document.getElementById("cep").addEventListener("blur", async function() {
     let cep = this.value.replace(/\D/g, '');
     if (cep.length !== 8) return;
-
     try {
         const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
         const dados = await res.json();
@@ -312,19 +354,18 @@ document.getElementById("cep").addEventListener("blur", async function() {
 <?php if ($sucesso): ?>
     (function() {
         const modal = document.getElementById("modal-sucesso");
-        const fechar = document.getElementById("fechar-modal");
-
-        modal.style.display = "block";
+        modal.style.display = "flex"; // Ativa o flex pra centralizar
 
         const irParaLogin = () => {
-            modal.style.display = "none";
             window.location.href = "Login.php";
         };
 
-        fechar.onclick = irParaLogin;
-        modal.onclick = (e) => { if (e.target === modal) irParaLogin(); };
+        document.getElementById("fechar-modal").onclick = irParaLogin;
+        modal.onclick = (e) => {
+            if (e.target === modal) irParaLogin();
+        };
 
-        setTimeout(irParaLogin, 3000);
+        setTimeout(irParaLogin, 3000); // Redireciona em 3 segundos
     })();
 <?php endif; ?>
 </script>
