@@ -140,6 +140,10 @@ a:hover {
   transition: all   0.3s ease;
 }
 
+button{
+  margin-top: 10px;
+}
+
 #btn-sair:hover {
   background-color: #8B0000;
 }
@@ -260,6 +264,58 @@ legend {
   color: #B22222;
   padding: 0 10px;
 }
+
+/* MODAL ESTILIZADO */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(6px);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-conteudo {
+    background: linear-gradient(135deg, #8B0000, #B22222);
+    color: white;
+    margin: 8% auto;
+    padding: 40px 25px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 520px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    position: relative;
+    animation: slideDown 0.4s ease;
+}
+
+.modal-conteudo p {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.fechar {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.fechar:hover {
+    color: #FFD700;
+    transform: scale(1.2);
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideDown { from { transform: translateY(-80px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
 /* ---------------- DARK MODE ---------------- */
 #dark-btn{
