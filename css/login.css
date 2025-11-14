@@ -1,0 +1,556 @@
+/* ====================== RESET ====================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ====================== BODY ====================== */
+body {
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #fff, #f3e9da, #ffe7e0);
+  background-size: 400% 400%;
+  animation: gradientBG 20s ease infinite;
+}
+
+.opcoes { /* NAV */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #B22222; /* vermelho institucional */
+    padding: 30px 0;
+    text-align: left;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.container-navbar {
+  display: flex;
+  justify-content: space-between; /* links na esquerda, ícone na direita */
+  align-items: center;
+  padding: 0 30px;
+}
+
+
+.nav-esquerda {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-esquerda a {
+  text-decoration: none;
+  color: white;
+  font-size: 17px;
+  letter-spacing: 2px;
+  padding: 6px;
+}
+
+.nav-esquerda a:hover {
+  color: #8B0000;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #B22222;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.dropdown-content a:hover {
+  background-color: #d1c89f;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* ÍCONE DIREITA */
+#usuario{
+  display: none;
+  width: 40px;
+  height: 30px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: all 0.3s ease;
+ 
+}
+#usuario:hover {
+  transform: translateY(-5px);
+
+}
+
+
+.usuario-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+ a:hover {
+  color: #8B0000;
+
+}
+
+#nome-usuario {
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+#btn-sair {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 50px;
+  top: 35px;
+  right: 0;
+  font-size: 11px;
+  background-color: #B22222;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 2px 8px;
+  border-radius: 5px;
+  display: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: all   0.3s ease;
+}
+
+#btn-sair:hover {
+  background-color: #8B0000;
+}
+
+/* Estilo do dropdown (submenu) */
+
+/*.opcoes a { /* NAV TEXTO */
+    /*text-decoration: none;
+    margin: 0 25px;
+    
+}*/
+
+
+.text { /* NAV TEXTO */
+     font-family: Arial, Helvetica, sans-serif;
+    padding: 6px;
+    width: 100%;
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+    letter-spacing: 2px;
+    font-size: 17px;
+}
+
+
+/* ====================== LOGIN ====================== */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+
+
+.container-login {
+  background-color: #FFF9F9;
+  padding: 40px 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  width: 320px;
+  text-align: center;
+  position: relative;
+  animation: slideFadeIn 0.7s ease forwards;
+  opacity: 0;
+  margin-top: 20px; /* espaço adequado do topo */
+}
+
+/* Título */
+.container-login h2 {
+  margin-bottom: 35px;
+  color: #B22222;
+}
+
+/* INPUT GROUP */
+.input-group {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.input-group label{
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  border-radius: 5px;
+  border: 2px solid #B22222;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #8B0000;
+  box-shadow: 0 0 10px rgba(178,34,34,0.4);
+  outline: none;
+}
+
+/* ÍCONES NOS INPUTS */
+.input-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #B22222;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.input-group input:focus + .input-icon {
+  color: #8B0000;
+  transform: scale(1.2);
+}
+
+/* BOTÃO */
+.btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #B22222;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #8B0000;
+  transform: scale(1.05);
+}
+
+/* CADASTRO */
+.cadastro {
+  margin-top: 15px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.cadastro a {
+  color: #B22222;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cadastro a:hover {
+  color: white;
+  background-color: #8B0000;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+/* SOCIAL LOGIN */
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 15px;
+}
+
+.social img {
+  width: 35px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.social img:hover {
+  transform: scale(1.2);
+}
+
+/* DARK/LIGHT MODE BUTTON */
+#dark-btn, #light-btn {
+  width: 40px;
+  position: fixed;
+  top: 300px;
+  right: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+body.dark-mode header,
+body.dark-mode footer,
+body.dark-mode nav,
+body.dark-mode section{
+  color: #f1f1f1;
+  background-color: #1e1e1e ;
+ 
+}
+
+body.dark-mode .dropdown-content {
+    background-color: #2c2c2c;;
+ 
+}
+
+#dark-btn:hover, #light-btn:hover {
+  transform: translateY(-5px);
+}
+
+/* ====================== DARK MODE ====================== */
+body.dark-mode {
+  background: #1e1e1e;
+  color: #f1f1f1;
+  animation: none; /* remove animação de gradiente */
+}
+
+body.dark-mode .opcoes {
+  background-color: #1e1e1e /* navbar escura */
+}
+
+body.dark-mode .container-login {
+  background-color: #2c2c2c;
+}
+
+body.dark-mode input {
+  background-color: #2c2c2c;
+  color: #fff;
+  border-color: #555;
+}
+
+body.dark-mode .input-icon {
+  color: #f1f1f1;
+}
+
+body.dark-mode .btn {
+  background-color: #8B0000;
+}
+
+body.dark-mode .btn:hover {
+  background-color: #250404;
+}
+
+body.dark-mode .cadastro a {
+  color: #B22222;
+}
+
+/* ====================== ANIMAÇÕES ====================== */
+@keyframes slideFadeIn {
+  0% { transform: translateY(-30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ====================== RESPONSIVIDADE ====================== */
+@media screen and (max-width: 768px) {
+ 
+    .container-navbar {
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center;
+    padding: 10px 20px;
+  }
+
+  .usuario-box {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    margin-left: auto;
+   
+  }
+
+  #usuario {
+    width: 20px;
+    height: 30px;
+  }
+
+  .nav-esquerda {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+     gap: 3px;
+  }
+
+  .nav-esquerda a, .dropdown  a {
+    font-size: 15px;
+    padding: 5px 0;
+    width: fit-content;
+  }
+
+  .dropdown-content {
+    position: absolute;
+    min-width: 160px;
+    background-color: #B22222;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1001;
+  }
+
+  .seta {
+    right: 2px; /* afasta da borda e do card, ajusta conforme necessário */
+    top: 30%;
+    transform: translateY(30%);
+    margin: 0; /* remove margens laterais */
+  }
+ 
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  width: 100vw; /* força 100% da viewport */
+  overflow-x: hidden; /* evita rolagem lateral */
+}
+
+
+  body.dark-mode .container-2,
+  body.dark-mode .quem-somos,
+  body.dark-mode .footer-contato {
+    background-color: #1e1e1e;
+  }
+
+.container-2 {
+    width: 100%;
+    background-color: #fff5ed;
+    text-align: center;
+    padding: 60px 0;
+    box-sizing: border-box;
+    overflow-x: hidden; /* impede a rolagem lateral */
+}
+
+.dropdown-content a {
+    display: none;
+  }
+
+  .dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .dropdown > a{
+    padding: 5px 0;
+    white-space: nowrap; /* Impede quebra de linha */
+  }
+
+  .text {
+    font-size: 15px;
+    margin: 0 5px;
+  }
+  .dropdown-content a {
+    display: none;
+  }
+}
+
+
+
+
+
+@media (max-width: 480px) {
+  .container-navbar {
+    padding: 8px 15px;
+  }
+.opcoes{
+ height:100px;
+
+}
+
+.dropdown-content a {
+    display: none;
+  }
+  .nav-esquerda {
+    gap: 1px;
+    
+  }
+
+  .nav-esquerda a, .dropdown > a {
+    font-size: 10px;
+
+  }
+.dropdown-content a {
+    display: none;
+  }
+  #usuario {
+    width: 15px;
+    height: 24px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+.seta {
+    right: 2px; /* ainda mais para esquerda, para não cobrir o card */
+    top: 20%;
+    transform: translateY(-30%);
+    margin: 0;
+  }
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  width: 100vw; /* força 100% da viewport */
+  overflow-x: hidden; /* evita rolagem lateral */
+}
+
+
+  body.dark-mode .container-2,
+  body.dark-mode .quem-somos,
+  body.dark-mode .footer-contato {
+    background-color: #1e1e1e;
+  }
+
+
+.container-2 {
+    width: 100%;
+    background-color: #fff5ed;
+    text-align: center;
+    padding: 60px 0;
+    box-sizing: border-box;
+    overflow-x: hidden; /* impede a rolagem lateral */
+}
+
+
+  .dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .text {
+    font-size: 11px;
+    
+  }
+}

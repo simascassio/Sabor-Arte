@@ -1,0 +1,598 @@
+* * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body { /* FORA */
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #F3E9DA; /* bege suave */
+    padding-top: 100px; /* espaço por causa do header fixo */
+}
+
+.opcoes { /* NAV */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #B22222; /* vermelho institucional */
+    padding: 30px 0;
+    text-align: left;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.container-navbar {
+  display: flex;
+  justify-content: space-between; /* links na esquerda, ícone na direita */
+  align-items: center;
+  padding: 0 30px;
+}
+
+
+.nav-esquerda {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-esquerda a {
+  text-decoration: none;
+  color: white;
+  font-size: 17px;
+  letter-spacing: 2px;
+  padding: 6px;
+}
+
+.nav-esquerda a:hover {
+  color: #8B0000;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #B22222;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.dropdown-content a:hover {
+  background-color: #d1c89f;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+a:hover {
+  color: #8B0000;
+ 
+}
+
+/* ÍCONE DIREITA */
+#usuario{
+  display: none;
+  width: 40px;
+  height: 30px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: all 0.3s ease;
+ 
+}
+#usuario:hover {
+  transform: translateY(-5px);
+
+}
+
+
+.usuario-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#nome-usuario {
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+#btn-sair {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 50px;
+  top: 35px;
+  right: 0;
+  font-size: 11px;
+  background-color: #B22222;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 2px 8px;
+  border-radius: 5px;
+  display: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: all   0.3s ease;
+}
+
+button{
+  margin-top: 10px;
+}
+
+#btn-sair:hover {
+  background-color: #8B0000;
+}
+
+/* Estilo do dropdown (submenu) */
+
+/*.opcoes a { /* NAV TEXTO */
+    /*text-decoration: none;
+    margin: 0 25px;
+    
+}*/
+
+
+.text { /* NAV TEXTO */
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 6px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    letter-spacing: 2px;
+    font-size: 17px;
+}
+
+
+/*.opcoes a:hover { /* NAV TEXTO */
+/*color: #8B0000; /* vermelho escuro no hover 
+}*/
+
+.container { /* DENTRO */
+    background: #FFF9F9; /* branco rosado */
+    padding: 80px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 700px;
+    text-align: center;
+}
+
+.container h2 { /* Se ainda usar algum h2 fora dos fieldset */
+    margin-bottom: 20px;
+    color: #B22222;
+}
+
+form { /* TEXTO DO FORMULARIO */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #333333;
+}
+
+label { /* TEXTO DE FORA */
+    align-self: flex-start;
+    font-size: 15px;
+    margin-left: 25px;
+    margin-bottom: 5px;
+    color: #333333;
+}
+
+.input { /* PREENCHER FORMULARIO */
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #B22222;
+    border-radius: 5px;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+select { /* SEXO */
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 2px solid #B22222;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.btn { /* BOTAO */
+    width: 100%;
+    max-width: 220px;
+    height: 40px;
+    background-color: #B22222;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: medium;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.error { /* MENSAGEM DE ERRO */
+    align-self: flex-start;
+    margin-left: 25px;
+    margin-top: -7px;
+    font-size: 0.9em;
+    color: red;
+}
+
+.btn:hover { /* DENTRO BOTAO */
+    background-color: #8B0000;
+    transform: translateY(-3px); /* agora sim sobe no hover */
+}
+
+/* ---------------- FIELDSET E LEGEND ---------------- */
+fieldset {
+  border: 2px solid #B22222; /* mesma cor dos inputs */
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+  width: 100%;
+  text-align: left;
+}
+
+legend {
+  font-size: 18px;
+  font-weight: bold;
+  color: #B22222;
+  padding: 0 10px;
+}
+
+/* ===================== MODAL BONITO COM FUNDO EMBAÇADO ===================== */
+/* ========================================
+   MODAL CENTRALIZADO, BONITO E MODERNO
+   ======================================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.modal-conteudo {
+    background: #dda7a7;
+    padding: 40px 30px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 520px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(131, 82, 82, 0.3);
+    position: relative;
+    animation: modalPop 0.4s ease-out forwards;
+}
+
+.modal-conteudo p {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 20px 0 0;
+}
+
+.fechar {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #95a5a6;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.fechar:hover {
+    color: #e74c3c;
+}
+
+/* Animações suaves */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalPop {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ---------------- DARK MODE ---------------- */
+#dark-btn{
+    width: 40px;
+    position: fixed;
+    top: 300px;
+    right: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+
+#dark-btn:hover {
+    transform: translateY(-5px);
+}
+
+#light-btn{
+    width: 40px;
+    position: fixed;
+    top: 300px;
+    right: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+
+#light-btn:hover {
+    transform: translateY(-5px);
+}
+
+/* Tema escuro global */
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+}
+
+/* Herdar cor do texto para tudo */
+body.dark-mode * {
+  color: inherit ;
+  background-color: transparent;
+  border-color: #555;
+}
+
+/* Sobrescreve elementos brancos específicos */
+body.dark-mode header,
+body.dark-mode nav,
+body.dark-mode section {
+  background-color: #1e1e1e ;
+}
+
+body.dark-mode p {
+    color: #f1f1f1; /* Cor do texto em modo escuro */
+} 
+
+body.dark-mode h1 {
+    color: #B22222; /* Cor do título em modo escuro */
+}
+
+body.dark-mode h2 {
+    color: #b22222; /* Cor do texto em modo escuro */
+}
+
+body.dark-mode .btn{
+    background-color: #8B0000;
+}
+
+body.dark-mode .btn:hover {
+    background-color: #250404;
+}
+
+body.dark-mode .container {
+    background-color: #2c2c2c; /* cinza escuro */
+    color: #f1f1f1; /* texto claro */
+}
+
+body.dark-mode fieldset {
+  border-color: #8B0000;
+}
+
+body.dark-mode legend {
+  color: #B22222;
+}
+
+/* ---------------- RESPONSIVIDADE ---------------- */
+@media (max-width: 768px) {
+  .container-navbar {
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center;
+    padding: 10px 20px;
+  }
+
+  .usuario-box {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    margin-left: auto;
+   
+  }
+
+  #usuario {
+    width: 20px;
+    height: 30px;
+  }
+
+  .nav-esquerda {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+     gap: 3px;
+  }
+
+  .nav-esquerda a, .dropdown  a {
+    font-size: 15px;
+    padding: 5px 0;
+    width: fit-content;
+  }
+
+  .dropdown-content {
+    position: absolute;
+    min-width: 160px;
+    background-color: #B22222;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1001;
+  }
+
+
+ 
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  width: 100vw; /* força 100% da viewport */
+  overflow-x: hidden; /* evita rolagem lateral */
+}
+
+
+  .dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .dropdown > a{
+    padding: 5px 0;
+    white-space: nowrap; /* Impede quebra de linha */
+  }
+
+  .text {
+    font-size: 15px;
+    margin: 0 5px;
+  }
+
+  .container {
+    width: 90%;
+    padding: 40px 20px;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .input,
+  select {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  label {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+
+  .btn {
+    max-width: 180px;
+    height: 38px;
+    font-size: 14px;
+    padding: 8px;
+  }
+.dropdown-content a {
+    display: none;
+  }
+  
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-top: 210px;
+  }
+
+  .container-navbar {
+    padding: 8px 15px;
+  }
+.opcoes{
+ height:100px;
+
+}
+  .nav-esquerda {
+    gap: 1px;
+    
+  }
+
+  .nav-esquerda a, .dropdown > a {
+    font-size: 10px;
+
+  }
+  .dropdown-content a {
+    display: none;
+  }
+
+  #usuario {
+    width: 15px;
+    height: 24px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  width: 100vw; /* força 100% da viewport */
+  overflow-x: hidden; /* evita rolagem lateral */
+}
+
+
+  .dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .text {
+    font-size: 11px;
+    
+  }
+
+
+  label {
+    font-size: 13px;
+    margin-left: 8px;
+  }
+
+  .input,
+  select {
+    width: 100%;
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+
+  .btn {
+    max-width: 100%;
+    height: 36px;
+    font-size: 13px;
+    padding: 8px;
+  }
+
+
+}

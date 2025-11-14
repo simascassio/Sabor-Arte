@@ -1,0 +1,504 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #F3E9DA; /* bege suave */
+   
+}
+
+
+.opcoes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #B22222; /* vermelho institucional */
+  padding: 30px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.container-navbar {
+  display: flex;
+  justify-content: space-between; /* links na esquerda, ícone na direita */
+  align-items: center;
+  padding: 0 30px;
+}
+
+/* LINKS ESQUERDA */
+.nav-esquerda {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-esquerda a {
+  text-decoration: none;
+  color: white;
+  font-size: 17px;
+  letter-spacing: 2px;
+  padding: 6px;
+}
+
+.nav-esquerda a:hover {
+  color: #8B0000;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #B22222;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.dropdown-content a:hover {
+  background-color: #d1c89f;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.usuario-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#usuario-icone {
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+}
+
+.submenu-usuario {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: #B22222;
+  padding: 10px;
+  border-radius: 5px;
+  flex-direction: column;
+  z-index: 999;
+}
+
+.submenu-usuario a {
+  color: white;
+  padding: 6px 10px;
+  display: block;
+}
+
+.text {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 6px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+    letter-spacing: 2px;
+    font-size: 17px;
+}
+
+.opcoes a:hover {
+    color: #8B0000; /* vermelho escuro no hover */
+}
+/* Container do login */
+.container-login {
+    background: #FFF9F9; /* branco rosado */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #B22222;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+/* Botão de login */
+.btn {
+    width: 100%;
+    max-width: 220px;
+    height: 40px;
+    background-color: #B22222;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: medium;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #8B0000;
+    transform: translateY(-3px); /* agora sim sobe no hover */
+}
+
+
+
+
+@media (max-width: 768px) {
+  .container-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; 
+    align-items: center;
+    padding: 10px 20px;
+    height: 50px;
+  
+  }
+
+  .usuario-box {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    cursor: pointer;
+    margin-left: 4px;
+   
+  }
+
+  #usuario {
+    width: 10px;
+    height: 20px;
+  }
+
+  .nav-esquerda {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+     gap: 2px;
+  }
+
+  .nav-esquerda a, .dropdown > a {
+    font-size: 15px;
+    padding: 5px 0;
+  
+  }
+
+  .dropdown-content {
+    position: absolute;
+    min-width: 160px;
+    background-color: #B22222;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1001;
+  }
+
+    .dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .dropdown > a{
+    padding: 5px 0;
+    white-space: nowrap; /* Impede quebra de linha */
+  }
+}
+
+@media (max-width: 480px) {
+  .container-navbar {
+    padding: 8px 15px;
+  }
+.opcoes{
+ height:100px;
+
+}
+  .nav-esquerda {
+    gap: 1px;
+    width: 100%;
+    white-space: nowrap; /* Impede quebra de linha */
+    
+  }
+
+  .nav-esquerda a, .dropdown > a {
+    font-size: 10px;
+
+  }
+
+  #usuario {
+    width: 15px;
+    height: 24px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  
+  .dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+#dark-btn{
+    width: 40px;
+    position: fixed;
+    top: 300px;
+    right: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+
+#dark-btn:hover {
+    transform: translateY(-5px);
+
+}
+
+#light-btn{
+    width: 40px;
+    position: fixed;
+    top: 300px;
+    right: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+
+#light-btn:hover {
+    transform: translateY(-5px);
+}
+/* Tema escuro global */
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+}
+
+/* Herdar cor do texto para tudo */
+body.dark-mode * {
+  color: inherit ;
+
+  border-color: #555;
+}
+/* Garantir que o <main> siga o tema escuro */
+body.dark-mode main {
+  background-color: #1e1e1e;
+}
+
+
+/* Sobrescreve elementos brancos específicos */
+body.dark-mode header,
+body.dark-mode nav,
+body.dark-mode section
+ {
+  background-color: #1e1e1e ;
+ 
+}
+
+
+ 
+body.dark-mode h1 {
+    color: #B22222; /* Cor do título em modo escuro */
+}
+body.dark-mode h2 {
+    color: #fff; /* Cor do texto em modo escuro */
+}
+
+.dark-mode .total-pedido{
+    background-color: #2c2c2c;
+    color: #fff;
+}
+
+#dark-btn{
+    width: 40px;
+    position: fixed;
+    top: 300px;
+    right: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+
+#dark-btn:hover {
+    transform: translateY(-5px);
+
+}
+
+#light-btn{
+    width: 40px;
+    position: fixed;
+    top: 300px;
+    right: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+
+#light-btn:hover {
+    transform: translateY(-5px);
+}
+
+#img-erro {
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  width: 300px; /* largura da imagem */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
+ 
+}
+
+#img-erro:hover {
+  transform: translate(-50%, -50%) scale(1.05); /* aumenta a imagem ao passar o mouse */
+  transition: transform 0.3s ease;
+  
+}
+ 
+
+.btn {
+  position: fixed;
+  bottom: 30px; /* canto inferior */
+  left: 30px;   /* canto esquerdo */
+  z-index: 2;
+  background-color: #B22222;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-voltar:hover {
+  background-color: #8B0000;
+  transform: translateY(-3px);
+}
+
+.btn-voltar {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  background-color: #B22222;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-voltar:hover {
+  background-color: #8B0000;
+  transform: translate(-50%, -52%);
+}
+body.pagina-erro {
+  background-color: #F3E9DA;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+
+@media (max-width: 768px) {
+  .container-navbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;          /* Permite quebra de linha se necessário */
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 20px;
+  }
+
+  .nav-esquerda {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;                /* Espaçamento maior pra respirar */
+    flex-wrap: wrap;          /* Quebra de linha se precisar */
+    max-width: 75%;           /* Limita o espaço para os links */
+  }
+
+  .nav-esquerda a, .dropdown > a {
+    font-size: 12px;
+    padding: 5px 0;
+    white-space: nowrap;      /* Impede quebra dentro do link */
+  }
+
+  .usuario-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    margin-left: auto;        /* Empurra pro canto direito */
+    max-width: 20%;           /* Limita a largura para não quebrar linha */
+    min-width: 50px;          /* Garante mínimo para ícone + nome */
+  }
+
+  #usuario {
+    width: 35px;
+    height: 30px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .container-navbar {
+    padding: 8px 15px;
+  }
+
+  .nav-esquerda {
+    gap: 6px;
+  }
+
+  .nav-esquerda a, .dropdown > a {
+    font-size: 13px;
+    padding: 4px 0;
+  }
+
+  #usuario {
+    width: 28px;
+    height: 24px;
+  }
+}
